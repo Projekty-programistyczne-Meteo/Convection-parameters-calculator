@@ -46,10 +46,10 @@ function Navbar({ activeHref, onNavigate }: NavbarProps) {
                 <button
                   type="button"
                   onClick={() => handleNavigation(link.href)}
-                  className={`text-sm font-medium transition ${
+                  className={`text-sm font-medium transition hover:cursor-pointer ${
                     activeHref === link.href
                       ? 'text-black'
-                      : 'text-stone-800 hover:text-black'
+                      : 'text-gray-700 hover:text-black'
                   }`}
                 >
                   {link.label}
@@ -61,10 +61,17 @@ function Navbar({ activeHref, onNavigate }: NavbarProps) {
 
         <div className="hidden items-center justify-end md:flex">
           <button
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-stone-900 transition hover:bg-sky-200"
+            className="group inline-flex h-10 w-10 items-center justify-center rounded-full text-stone-900 transition-colors duration-200 "
             aria-label="Open tools"
+            onClick={() => handleNavigation(links[5].href)}
           >
-            <span className="text-xl">🛠</span>
+            <span className="flex items-center justify-center">
+              <img
+                src="/favicons/technical-support.png"
+                alt="technical support icon"
+                className="h-10 w-10 transform-gpu transition-transform duration-200 ease-out group-hover:scale-110 cursor-pointer"
+              />
+            </span>
           </button>
         </div>
 

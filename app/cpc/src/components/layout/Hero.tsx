@@ -1,9 +1,9 @@
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#0f5d93] text-white">
-      <div className="absolute inset-1 h-full w-full">
+      <div className="absolute inset-0 w-full h-full">
         <img
-          src="/clouds_and_sky.png"
+          src="/images/clouds_and_sky.png"
           alt="Clouds and sky"
           className="h-full w-full object-cover object-bottom"
         />
@@ -11,7 +11,10 @@ function Hero() {
       </div>
 
       <div className="relative mx-auto flex min-h-136 max-w-7xl flex-col items-center justify-center px-4 py-16 text-center sm:px-6 lg:px-8">
-        <h1 className="max-w-5xl text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
+        <h1
+          className="max-w-5xl text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl"
+          style={{ fontFamily: '"Carter One", cursive' }}
+        >
           Convection Parameters Calculator
         </h1>
 
