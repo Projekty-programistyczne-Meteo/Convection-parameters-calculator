@@ -1,23 +1,64 @@
-import Navbar from './components/Navbar';
+import { useEffect, useState } from 'react';
+import Navbar from './components/layout/Navbar';
+import MainPage from './components/pages/MainPage/MainPage';
+import AllToolsPage from './components/pages/AllToolsPage/AllToolsPage';
+import CalculatorsPage from './components/pages/CalculatorPage/CalculatorsPage';
+import ConvertersPage from './components/pages/ConvertersPage/ConvertersPage';
+import AboutUsPage from './components/pages/AboutUsPage/AboutUsPage';
+import SupportPage from './components/pages/SupportPage/SupportPage';
+
+const allowedHrefs = [
+  '#',
+  '#all-tools',
+  '#calculators',
+  '#converters',
+  '#about-us',
+  '#support',
+] as const;
+
+type Href = (typeof allowedHrefs)[number];
+
+const getInitialHref = (): Href => {
+  const currentHash = window.location.hash as Href;
+  return allowedHrefs.includes(currentHash) ? currentHash : '#';
+};
 
 function App() {
+  const [activeHref, setActiveHref] = useState<Href>(getInitialHref);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const currentHash = window.location.hash as Href;
+      setActiveHref(allowedHrefs.includes(currentHash) ? currentHash : '#');
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const renderPage = () => {
+    switch (activeHref) {
+      case '#':
+        return <MainPage />;
+      case '#all-tools':
+        return <AllToolsPage />;
+      case '#calculators':
+        return <CalculatorsPage />;
+      case '#converters':
+        return <ConvertersPage />;
+      case '#about-us':
+        return <AboutUsPage />;
+      case '#support':
+        return <SupportPage />;
+      default:
+        return <MainPage />;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white text-stone-900">
-      <Navbar />
-
-      <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          <div className="rounded-xl border border-slate-200 p-6 shadow-sm">
-            Hello World!
-          </div>
-          <div className="rounded-xl border border-slate-200 p-6 shadow-sm">
-            Kolejna sekcja
-          </div>
-          <div className="rounded-xl border border-slate-200 p-6 shadow-sm">
-            Trzecia sekcja
-          </div>
-        </section>
-      </main>
+      <Navbar activeHref={activeHref} onNavigate={setActiveHref} />
+      {renderPage()}
     </div>
   );
 }

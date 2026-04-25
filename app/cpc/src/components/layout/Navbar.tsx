@@ -2,36 +2,58 @@ import { useState } from 'react';
 
 const links = [
   { label: 'Home', href: '#' },
-  { label: 'All tools', href: '#tools' },
+  { label: 'All tools', href: '#all-tools' },
   { label: 'Calculators', href: '#calculators' },
   { label: 'Converters', href: '#converters' },
-  { label: 'About Us', href: '#about' },
+  { label: 'About Us', href: '#about-us' },
   { label: 'Support', href: '#support' },
-];
+] as const;
 
-function Navbar() {
+type NavbarProps = {
+  activeHref: (typeof links)[number]['href'];
+  onNavigate: (href: (typeof links)[number]['href']) => void;
+};
+
+function Navbar({ activeHref, onNavigate }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleNavigation = (href: (typeof links)[number]['href']) => {
+    if (href === '#') {
+      window.history.pushState(null, '', window.location.pathname);
+    } else {
+      window.history.pushState(null, '', href);
+    }
+
+    onNavigate(href);
+    setIsOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-300 bg-sky-100/95 backdrop-blur">
       <div className="mx-auto grid min-h-16 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:px-6 lg:px-8">
-        <a
-          href="#"
-          className="text-3xl font-black tracking-tight text-stone-900"
+        <button
+          type="button"
+          onClick={() => handleNavigation('#')}
+          className="text-left text-3xl font-black tracking-tight text-stone-900"
         >
           CPC
-        </a>
+        </button>
 
         <nav className="hidden md:block">
           <ul className="flex items-center justify-center gap-6 lg:gap-10">
             {links.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
-                  className="text-sm font-medium text-stone-800 transition hover:text-black"
+                <button
+                  type="button"
+                  onClick={() => handleNavigation(link.href)}
+                  className={`text-sm font-medium transition ${
+                    activeHref === link.href
+                      ? 'text-black'
+                      : 'text-stone-800 hover:text-black'
+                  }`}
                 >
                   {link.label}
-                </a>
+                </button>
               </li>
             ))}
           </ul>
@@ -62,13 +84,17 @@ function Navbar() {
           <ul className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6">
             {links.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
-                  className="block rounded-md px-3 py-3 text-sm font-medium text-stone-800 transition hover:bg-sky-200 hover:text-black"
-                  onClick={() => setIsOpen(false)}
+                <button
+                  type="button"
+                  onClick={() => handleNavigation(link.href)}
+                  className={`block w-full rounded-md px-3 py-3 text-left text-sm font-medium transition ${
+                    activeHref === link.href
+                      ? 'bg-sky-200 text-black'
+                      : 'text-stone-800 hover:bg-sky-200 hover:text-black'
+                  }`}
                 >
                   {link.label}
-                </a>
+                </button>
               </li>
             ))}
           </ul>
