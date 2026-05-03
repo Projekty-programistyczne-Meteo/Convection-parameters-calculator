@@ -36,7 +36,7 @@ function Navbar({ activeHref, onNavigate }: NavbarProps) {
           onClick={() => handleNavigation('#')}
           className="text-left text-3xl font-black tracking-tight text-stone-900"
         >
-          CPC
+          <img src="logo.svg" alt="CPC Logo" className="h-20 w-20" />
         </button>
 
         <nav className="hidden md:block">
