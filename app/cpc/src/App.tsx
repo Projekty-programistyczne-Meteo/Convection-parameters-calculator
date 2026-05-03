@@ -7,23 +7,23 @@ import ConvertersPage from './components/pages/ConvertersPage/ConvertersPage';
 import AboutUsPage from './components/pages/AboutUsPage/AboutUsPage';
 import SupportPage from './components/pages/SupportPage/SupportPage';
 
-const allowedHrefs = [
-  '#',
-  '#all-tools',
-  '#calculators',
-  '#converters',
-  '#about-us',
-  '#support',
-] as const;
-
-type Href = (typeof allowedHrefs)[number];
-
-const getInitialHref = (): Href => {
-  const currentHash = window.location.hash as Href;
-  return allowedHrefs.includes(currentHash) ? currentHash : '#';
-};
-
 function App() {
+  const allowedHrefs = [
+    '#',
+    '#all-tools',
+    '#calculators',
+    '#converters',
+    '#about-us',
+    '#support',
+  ] as const;
+
+  type Href = (typeof allowedHrefs)[number];
+
+  const getInitialHref = (): Href => {
+    const currentHash = window.location.hash as Href;
+    return allowedHrefs.includes(currentHash) ? currentHash : '#';
+  };
+  
   const [activeHref, setActiveHref] = useState<Href>(getInitialHref);
 
   useEffect(() => {
