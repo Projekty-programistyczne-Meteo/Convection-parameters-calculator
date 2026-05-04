@@ -1,7 +1,7 @@
 ﻿/// <reference types="cypress" />
 /// <reference path="../support/component.ts" />
 
-import App from '../../../src/App';
+import App from '../../../../src/App';
 
 describe('Load component', () => {
   it('Renders all components', () => {
