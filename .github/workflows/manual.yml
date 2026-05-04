@@ -67,7 +67,7 @@ jobs:
           path: app/cpc/dist
 
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
     needs: full-build
     runs-on: ubuntu-latest
     environment:
