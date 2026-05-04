@@ -1,10 +1,10 @@
-name: Deploy to GitHub Pages
+name: Deploy to (dev branch) GitHub Pages
 
 on:
   push:
-    branches: [main, dev]
+    branches: [dev]
   pull_request:
-    branches: [main, dev]
+    branches: [dev]
     types: [opened, synchronize, reopened]
   workflow_dispatch:
 
@@ -57,22 +57,20 @@ jobs:
         run: npx cypress run --e2e
 
       - name: Setup Pages
-        if: github.ref == 'refs/heads/main'
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
-        if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
           path: app/cpc/dist
 
   deploy:
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
     needs: full-build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Deploy
         id: deployment
