@@ -1,0 +1,66 @@
+import { useEffect, useState } from 'react';
+import Navbar from './components/layout/Navbar';
+import MainPage from './components/pages/MainPage/MainPage';
+import AllToolsPage from './components/pages/AllToolsPage/AllToolsPage';
+import CalculatorsPage from './components/pages/CalculatorPage/CalculatorsPage';
+import ConvertersPage from './components/pages/ConvertersPage/ConvertersPage';
+import AboutUsPage from './components/pages/AboutUsPage/AboutUsPage';
+import SupportPage from './components/pages/SupportPage/SupportPage';
+
+function App() {
+  const allowedHrefs = [
+    '#',
+    '#all-tools',
+    '#calculators',
+    '#converters',
+    '#about-us',
+    '#support',
+  ] as const;
+
+  type Href = (typeof allowedHrefs)[number];
+
+  const getInitialHref = (): Href => {
+    const currentHash = window.location.hash as Href;
+    return allowedHrefs.includes(currentHash) ? currentHash : '#';
+  };
+  
+  const [activeHref, setActiveHref] = useState<Href>(getInitialHref);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const currentHash = window.location.hash as Href;
+      setActiveHref(allowedHrefs.includes(currentHash) ? currentHash : '#');
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const renderPage = () => {
+    switch (activeHref) {
+      case '#':
+        return <MainPage />;
+      case '#all-tools':
+        return <AllToolsPage />;
+      case '#calculators':
+        return <CalculatorsPage />;
+      case '#converters':
+        return <ConvertersPage />;
+      case '#about-us':
+        return <AboutUsPage />;
+      case '#support':
+        return <SupportPage />;
+      default:
+        return <MainPage />;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-white text-stone-900">
+      <Navbar activeHref={activeHref} onNavigate={setActiveHref} />
+      {renderPage()}
+    </div>
+  );
+}
+
+export default App;
