@@ -2,6 +2,8 @@ import Hero from '../../layout/Hero';
 import TemperatureUnitsConverter from '../../layout/Converters/TemperatureUnitsConverter';
 import WindUnitsConverter from '../../layout/Converters/WindUnitsConverter';
 
+const baseUrl = import.meta.env.BASE_URL;
+
 function ConvertersPage() {
   return (
     <>
@@ -43,7 +45,7 @@ function ConvertersPage() {
 
             <div className="flex justify-center py-4">
               <img
-                src="/diagrams/temperatureExample.svg"
+                src={`${baseUrl}diagrams/temperatureExample.svg`}
                 alt="Diagram showing conversion from Fahrenheit to Celsius and then to Kelvin"
                 className="h-auto w-full max-w-2xl"
               />

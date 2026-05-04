@@ -1,12 +1,12 @@
-const { defineConfig } = require('cypress');
-const { devServer } = require('../vite.config');
+import { defineConfig } from 'cypress';
+import viteConfig from '../vite.config';
 
-module.exports = defineConfig({
+export default defineConfig({
   allowCypressEnv: false,
 
   e2e: {
     setupNodeEvents(on, config) {},
-    baseUrl: 'http://localhost:5173/',
+    baseUrl: 'http://localhost:5173/Convection-parameters-calculator/',
     specPattern: 'cypress/e2e/**/*.cy.{js,ts}',
     supportFile: 'cypress/support/e2e.ts',
     viewportWidth: 1920,
@@ -27,6 +27,7 @@ module.exports = defineConfig({
     devServer: {
       framework: 'react',
       bundler: 'vite',
+      viteConfig,
     },
     indexHtmlFile: 'cypress/support/component-index.html',
     supportFile: 'cypress/support/component.ts',

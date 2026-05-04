@@ -1,9 +1,11 @@
+const baseUrl = import.meta.env.BASE_URL;
+
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#0f5d93] text-white">
       <div className="absolute inset-0 w-full h-full">
         <img
-          src="/images/clouds_and_sky.png"
+          src={`${baseUrl}images/clouds_and_sky.png`}
           alt="Clouds and sky"
           className="h-full w-full object-cover object-bottom"
         />

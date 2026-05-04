@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const links = [
   { label: 'Home', href: '#' },
   { label: 'All tools', href: '#all-tools' },
@@ -36,7 +38,11 @@ function Navbar({ activeHref, onNavigate }: NavbarProps) {
           onClick={() => handleNavigation('#')}
           className="text-left text-3xl font-black tracking-tight text-stone-900"
         >
-          <img src="logo.svg" alt="CPC Logo" className="h-20 w-20" />
+          <img
+            src={`${baseUrl}logo.svg`}
+            alt="CPC Logo"
+            className="h-20 w-20"
+          />
         </button>
 
         <nav className="hidden md:block">
@@ -67,7 +73,7 @@ function Navbar({ activeHref, onNavigate }: NavbarProps) {
           >
             <span className="flex items-center justify-center">
               <img
-                src="/favicons/technical-support.png"
+                src={`${baseUrl}favicons/technical-support.png`}
                 alt="technical support icon"
                 className="h-10 w-10 transform-gpu transition-transform duration-200 ease-out group-hover:scale-110 cursor-pointer"
               />
