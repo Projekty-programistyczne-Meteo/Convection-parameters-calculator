@@ -49,7 +49,7 @@ function TemperatureUnitsConverter() {
             </label>
             <input
               id="temperatureValue"
-              type="text"
+              type="number"
               inputMode="decimal"
               placeholder="(type value positive or negative) {default: 0}"
               value={temperatureValue}

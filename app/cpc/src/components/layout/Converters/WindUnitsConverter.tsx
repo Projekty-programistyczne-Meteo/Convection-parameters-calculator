@@ -44,9 +44,9 @@ function WindUnitsConverter() {
             </label>
             <input
               id="windValue"
-              type="text"
+              type="number"
               inputMode="decimal"
-              placeholder="(type wind speed value)"
+              placeholder="(type value positive or negative) {default: 0}"
               value={windValue}
               onChange={(e) => setWindValue(e.target.value)}
               className="h-12 w-full rounded-sm border border-zinc-400 bg-[#ECECEC] px-3 text-sm text-stone-900 outline-none transition focus:border-sky-700 focus:bg-white"
