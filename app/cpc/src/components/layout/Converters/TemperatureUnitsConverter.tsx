@@ -39,6 +39,9 @@ function TemperatureUnitsConverter() {
     <section className="bg-[#F6F1F1] px-6 py-10 md:px-12 lg:px-20">
       <div className="mx-auto max-w-6xl">
         {/* Formularz */}
+        <h2 className="text-xl font-bold tracking-tight text-stone-900 md:text-2xl mb-5">
+          1) Temperature Units Converter
+        </h2>
         <div className="grid gap-6 lg:grid-cols-[1fr_1fr_auto] lg:items-end">
           <div className="space-y-2">
             <label

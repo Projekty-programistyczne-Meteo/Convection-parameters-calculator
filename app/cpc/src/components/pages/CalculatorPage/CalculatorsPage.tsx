@@ -1,12 +1,25 @@
 import Hero from '../../layout/Hero';
+import StabilityOfTheAtmosphere from '../../layout/Calculators/StabilityOfTheAtmosphere';
+import UpdraftStrenght from '../../layout/Calculators/UpdraftStrenght';
+import VerticalVelocity from '../../layout/Calculators/VerticalVelocity';
+import EnergyHelicityIndex from '../../layout/Calculators/EnergyHelicityIndex';
+import DerechoCompositeParameter from '../../layout/Calculators/DerechoCompositeParameter';
+import LiftingCondensationLevel from '../../layout/Calculators/LiftingCondensationLevel';
+import DewPointTemperature from '../../layout/Calculators/DewPointTemperature';
+import UpwardVerticalVelocity from '../../layout/Calculators/UpwardVerticalVelocity';
 
 function CalculatorsPage() {
   return (
     <>
       <Hero />
-      <section className="px-4 py-10">
-        <h2 className="text-2xl font-bold">Hello calculatorsPage!</h2>
-      </section>
+      <StabilityOfTheAtmosphere />
+      <UpdraftStrenght />
+      <VerticalVelocity />
+      <EnergyHelicityIndex />
+      <DerechoCompositeParameter />
+      <LiftingCondensationLevel />
+      <DewPointTemperature />
+      <UpwardVerticalVelocity />
     </>
   );
 }
