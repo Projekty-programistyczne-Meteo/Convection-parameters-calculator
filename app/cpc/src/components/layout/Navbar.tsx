@@ -41,7 +41,7 @@ function Navbar({ activeHref, onNavigate }: NavbarProps) {
           <img
             src={`${baseUrl}logo.svg`}
             alt="CPC Logo"
-            className="h-20 w-20"
+            className="h-20 w-20 hover:cursor-pointer"
           />
         </button>
 
