@@ -3,7 +3,7 @@ import {
   WIND_UNITS,
   convertAllWindUnits,
   type WindUnit,
-} from './WindConvertion';
+} from '../../../utils/Converters/WindConvertion';
 
 function formatWindValue(value: number): string {
   if (!Number.isFinite(value)) {
@@ -33,6 +33,9 @@ function WindUnitsConverter() {
   return (
     <section className="bg-[#F6F1F1] px-6 py-10 md:px-12 lg:px-20">
       <div className="mx-auto max-w-6xl">
+        <h2 className="text-xl font-bold tracking-tight text-stone-900 md:text-2xl mb-5">
+          2) Wind Units Converter
+        </h2>
         {/* Formularz */}
         <div className="grid gap-6 lg:grid-cols-[1fr_1fr_auto] lg:items-end">
           <div className="space-y-2">
@@ -44,9 +47,9 @@ function WindUnitsConverter() {
             </label>
             <input
               id="windValue"
-              type="text"
+              type="number"
               inputMode="decimal"
-              placeholder="(type wind speed value)"
+              placeholder="(type value positive or negative) {default: 0}"
               value={windValue}
               onChange={(e) => setWindValue(e.target.value)}
               className="h-12 w-full rounded-sm border border-zinc-400 bg-[#ECECEC] px-3 text-sm text-stone-900 outline-none transition focus:border-sky-700 focus:bg-white"

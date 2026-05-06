@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Navbar from './components/layout/Navbar';
 import MainPage from './components/pages/MainPage/MainPage';
-import AllToolsPage from './components/pages/AllToolsPage/AllToolsPage';
 import CalculatorsPage from './components/pages/CalculatorPage/CalculatorsPage';
 import ConvertersPage from './components/pages/ConvertersPage/ConvertersPage';
 import AboutUsPage from './components/pages/AboutUsPage/AboutUsPage';
@@ -10,7 +9,6 @@ import SupportPage from './components/pages/SupportPage/SupportPage';
 function App() {
   const allowedHrefs = [
     '#',
-    '#all-tools',
     '#calculators',
     '#converters',
     '#about-us',
@@ -23,7 +21,7 @@ function App() {
     const currentHash = window.location.hash as Href;
     return allowedHrefs.includes(currentHash) ? currentHash : '#';
   };
-  
+
   const [activeHref, setActiveHref] = useState<Href>(getInitialHref);
 
   useEffect(() => {
@@ -40,8 +38,6 @@ function App() {
     switch (activeHref) {
       case '#':
         return <MainPage />;
-      case '#all-tools':
-        return <AllToolsPage />;
       case '#calculators':
         return <CalculatorsPage />;
       case '#converters':

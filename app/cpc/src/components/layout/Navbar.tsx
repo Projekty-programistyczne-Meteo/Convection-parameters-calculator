@@ -4,7 +4,7 @@ const baseUrl = import.meta.env.BASE_URL;
 
 const links = [
   { label: 'Home', href: '#' },
-  { label: 'All tools', href: '#all-tools' },
+  // { label: 'All tools', href: '#all-tools' },
   { label: 'Calculators', href: '#calculators' },
   { label: 'Converters', href: '#converters' },
   { label: 'About Us', href: '#about-us' },
@@ -41,7 +41,7 @@ function Navbar({ activeHref, onNavigate }: NavbarProps) {
           <img
             src={`${baseUrl}logo.svg`}
             alt="CPC Logo"
-            className="h-20 w-20"
+            className="h-20 w-20 hover:cursor-pointer"
           />
         </button>
 
@@ -69,7 +69,7 @@ function Navbar({ activeHref, onNavigate }: NavbarProps) {
           <button
             className="group inline-flex h-10 w-10 items-center justify-center rounded-full text-stone-900 transition-colors duration-200 "
             aria-label="Open tools"
-            onClick={() => handleNavigation(links[5].href)}
+            onClick={() => handleNavigation(links[4].href)}
           >
             <span className="flex items-center justify-center">
               <img
