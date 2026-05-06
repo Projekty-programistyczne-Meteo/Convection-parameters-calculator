@@ -3,7 +3,7 @@ import {
   WIND_UNITS,
   convertAllWindUnits,
   type WindUnit,
-} from './WindConvertion';
+} from '../../../utils/Converters/WindConvertion';
 
 function formatWindValue(value: number): string {
   if (!Number.isFinite(value)) {

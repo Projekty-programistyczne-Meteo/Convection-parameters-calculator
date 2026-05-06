@@ -3,7 +3,7 @@ import {
   TEMPERATURE_UNITS,
   convertAllUnits,
   type TemperatureUnit,
-} from './TemperatureConversion';
+} from '../../../utils/Converters/TemperatureConversion';
 
 function formatValue(value: number): string {
   if (!Number.isFinite(value)) {
