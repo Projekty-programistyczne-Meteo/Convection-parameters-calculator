@@ -1,13 +1,17 @@
 import {
   calculateLiftingCondensationLevel,
   type LiftingCondensationLevelResult,
-} from '../../../utils/Calculators/liftingCondensationLevelCalculator';
+} from '../../../utils/Calculators/LiftingCondensationLevelCalculator';
 import { useCalculatorForm } from '../../../hooks/useCalculatorForm';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';
 import NumberInput from '../../ui/NumberInput';
 import CalculationResultBox from '../../ui/CalculationResultBox';
 
+/**
+ * Renders the lifting condensation level calculator using temperature and dew point inputs.
+ * It shows the estimated cloud-base height result together with the formula explanation box.
+ */
 function LiftingCondensationLevel() {
   const { fields, result, setField, handleCalculate } = useCalculatorForm<
     {

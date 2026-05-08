@@ -1,5 +1,3 @@
-// src/utils/Calculators/DerechoCompositeParameterCalculator.ts
-
 export type DerechoCompositeParameterInput = {
   dcape: number;
   mucape: number;
@@ -11,6 +9,10 @@ export type DerechoCompositeParameterResult = {
   dcp: number;
 };
 
+/**
+ * Calculates the Derecho Composite Parameter from DCAPE, MUCAPE, shear, and mean wind inputs.
+ * The returned object keeps the result shape stable for calculator UI components.
+ */
 export function calculateDerechoCompositeParameter({
   dcape,
   mucape,

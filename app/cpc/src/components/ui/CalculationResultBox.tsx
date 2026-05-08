@@ -1,11 +1,13 @@
-// src/components/ui/CalculationResultBox.tsx
-
 type CalculationResultBoxProps = {
   formula: React.ReactNode;
   result?: string;
   description: string;
 };
 
+/**
+ * Displays a calculator formula, optional computed result, and short explanatory text in one reusable block.
+ * Calculator sections use it to keep result presentation consistent across different formulas.
+ */
 function CalculationResultBox({
   formula,
   result,

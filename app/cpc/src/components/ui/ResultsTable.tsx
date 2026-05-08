@@ -1,5 +1,3 @@
-// src/components/ui/ResultsTable.tsx
-
 type ResultsTableRow = {
   id: string;
   label: string;
@@ -12,6 +10,10 @@ type ResultsTableProps = {
   rows: ResultsTableRow[];
 };
 
+/**
+ * Displays a two-column results table for converter outputs.
+ * It accepts prepared rows so converter components can keep calculation and formatting logic outside the table.
+ */
 function ResultsTable({ leftHeader, rightHeader, rows }: ResultsTableProps) {
   return (
     <div className="mt-10 overflow-hidden rounded-sm border border-zinc-400 bg-[#ECECEC]">

@@ -3,13 +3,17 @@ import {
   convertAllWindUnits,
   type WindUnit,
 } from '../../../utils/Converters/WindConvertion';
-import { useUnitsConverter } from '../../../hooks/UseUnitsConverter';
-import { formatNumericValue } from '../../../utils/FormatNumericValue';
+import { useUnitsConverter } from '../../../hooks/useUnitsConverter';
+import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';
 import NumberInput from '../../ui/NumberInput';
 import SelectField from '../../ui/SelectField';
 import ResultsTable from '../../ui/ResultsTable';
 
+/**
+ * Provides the wind speed conversion form and result table for all supported wind units.
+ * It uses meters per second as the shared base unit through the reusable converter hook.
+ */
 function WindUnitsConverter() {
   const {
     valueInput,

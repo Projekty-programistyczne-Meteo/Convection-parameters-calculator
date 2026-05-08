@@ -6,6 +6,10 @@ import ConvertersPage from './components/pages/ConvertersPage/ConvertersPage';
 import AboutUsPage from './components/pages/AboutUsPage/AboutUsPage';
 import SupportPage from './components/pages/SupportPage/SupportPage';
 
+/**
+ * Root application component that controls which page is visible from the current hash route.
+ * It keeps navigation state in one place and passes the active route down to the navbar.
+ */
 function App() {
   const allowedHrefs = [
     '#',

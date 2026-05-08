@@ -1,13 +1,17 @@
 import {
   calculateStabilityOfTheAtmosphere,
   type StabilityResult,
-} from '../../../utils/Calculators/stabilityOfTheAtmosphereCalculator';
+} from '../../../utils/Calculators/StabilityOfTheAtmosphereCalculator';
 import { useCalculatorForm } from '../../../hooks/useCalculatorForm';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';
 import NumberInput from '../../ui/NumberInput';
 import CalculationResultBox from '../../ui/CalculationResultBox';
 
+/**
+ * Renders the Lifted Index calculator for comparing environmental and parcel temperatures.
+ * It keeps the calculator UI focused on the two 500 mb temperature inputs and the formatted LI output.
+ */
 function StabilityOfTheAtmosphere() {
   const { fields, result, setField, handleCalculate } = useCalculatorForm<
     {

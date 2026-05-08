@@ -1,5 +1,3 @@
-// src/hooks/useUnitsConverter.ts
-
 import { useState } from 'react';
 
 type UnitId = string;
@@ -18,6 +16,10 @@ export interface UseUnitsConverterReturn<U extends UnitId> {
   handleConvert: () => void;
 }
 
+/**
+ * Manages a generic units converter form, selected source unit, and latest conversion results.
+ * Converter components provide the concrete conversion function while this hook owns shared UI state.
+ */
 export function useUnitsConverter<U extends UnitId>(
   config: UnitsConverterConfig<U>,
 ): UseUnitsConverterReturn<U> {
@@ -27,6 +29,9 @@ export function useUnitsConverter<U extends UnitId>(
   const [selectedUnit, setSelectedUnit] = useState<U>(defaultUnit);
   const [results, setResults] = useState<Partial<Record<U, number>>>({});
 
+  /**
+   * Parses the current input value and refreshes the result map for the selected source unit.
+   */
   const handleConvert = () => {
     const numericValue = Number(valueInput.replace(',', '.'));
 

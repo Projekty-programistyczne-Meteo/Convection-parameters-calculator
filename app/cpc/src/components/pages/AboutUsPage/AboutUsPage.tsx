@@ -1,5 +1,9 @@
 import Hero from '../../layout/Hero';
 
+/**
+ * Composes the About Us page with the shared hero and page-specific content area.
+ * This page component is the route-level wrapper for future project or team information.
+ */
 function AboutUsPage() {
   return (
     <>

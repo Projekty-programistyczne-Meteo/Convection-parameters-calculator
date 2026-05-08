@@ -1,13 +1,17 @@
 import {
   calculateVerticalVelocity,
   type VerticalVelocityResult,
-} from '../../../utils/Calculators/verticalVelocityCalculator';
+} from '../../../utils/Calculators/VerticalVelocityCalculator';
 import { useCalculatorForm } from '../../../hooks/useCalculatorForm';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';
 import NumberInput from '../../ui/NumberInput';
 import CalculationResultBox from '../../ui/CalculationResultBox';
 
+/**
+ * Renders the vertical lifting velocity calculator from a CIN value.
+ * It validates CIN as non-negative and displays the Wlift result with the square-root formula.
+ */
 function VerticalVelocity() {
   const { fields, result, setField, handleCalculate } = useCalculatorForm<
     { cin: string },

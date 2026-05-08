@@ -1,13 +1,17 @@
 import {
   calculateEnergyHelicityIndex,
   type EnergyHelicityIndexResult,
-} from '../../../utils/Calculators/energyHelicityIndexCalculator';
+} from '../../../utils/Calculators/EnergyHelicityIndexCalculator';
 import { useCalculatorForm } from '../../../hooks/useCalculatorForm';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';
 import NumberInput from '../../ui/NumberInput';
 import CalculationResultBox from '../../ui/CalculationResultBox';
 
+/**
+ * Renders the Energy Helicity Index calculator for CAPE and storm-relative helicity values.
+ * It passes parsed inputs to the EHI utility and presents the formatted result beside the formula.
+ */
 function EnergyHelicityIndex() {
   const { fields, result, setField, handleCalculate } = useCalculatorForm<
     {

@@ -25,6 +25,10 @@ export const TEMPERATURE_UNITS: TemperatureUnitInfo[] = [
 ];
 
 // 1) z jednostki źródłowej -> na °C
+/**
+ * Converts a temperature value from the selected source scale into Celsius.
+ * Celsius is the shared intermediate scale used by the full temperature converter.
+ */
 export function toCelsius(foreignValue: number, from: TemperatureUnit): number {
   switch (from) {
     case 'celsius':
@@ -56,6 +60,10 @@ export function toCelsius(foreignValue: number, from: TemperatureUnit): number {
 }
 
 // 2) z °C -> na docelową jednostkę
+/**
+ * Converts a Celsius temperature value into the requested target scale.
+ * This is the second half of the two-step conversion path for non-Celsius inputs.
+ */
 export function fromCelsius(valueCelsius: number, to: TemperatureUnit): number {
   switch (to) {
     case 'celsius':
@@ -87,6 +95,10 @@ export function fromCelsius(valueCelsius: number, to: TemperatureUnit): number {
 }
 
 // 3) metoda łącząca – na podstawie wyboru użytkownika
+/**
+ * Converts one input temperature into every supported temperature scale.
+ * It preserves the original value for the selected unit and uses Celsius as the intermediate base for all others.
+ */
 export function convertAllUnits(
   inputValue: number,
   inputUnit: TemperatureUnit,

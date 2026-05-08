@@ -1,13 +1,17 @@
 import {
   calculateDerechoCompositeParameter,
   type DerechoCompositeParameterResult,
-} from '../../../utils/Calculators/derechoCompositeParameterCalculator';
+} from '../../../utils/Calculators/DerechoCompositeParameterCalculator';
 import { useCalculatorForm } from '../../../hooks/useCalculatorForm';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';
 import NumberInput from '../../ui/NumberInput';
 import CalculationResultBox from '../../ui/CalculationResultBox';
 
+/**
+ * Renders the Derecho Composite Parameter calculator with inputs for instability, shear, and mean wind.
+ * It collects string form values, converts them through the shared calculator hook, and displays the DCP result.
+ */
 function DerechoCompositeParameter() {
   const { fields, result, setField, handleCalculate } = useCalculatorForm<
     {

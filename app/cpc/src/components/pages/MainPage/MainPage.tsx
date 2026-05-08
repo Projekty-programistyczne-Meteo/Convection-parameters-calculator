@@ -1,5 +1,9 @@
 import Hero from '../../layout/Hero';
 
+/**
+ * Composes the home page with the shared hero and the current landing content section.
+ * This route-level component is the default view when no supported hash route is selected.
+ */
 function MainPage() {
   return (
     <>

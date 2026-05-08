@@ -4,6 +4,10 @@ import WindUnitsConverter from '../../layout/Converters/WindUnitsConverter';
 
 const baseUrl = import.meta.env.BASE_URL;
 
+/**
+ * Composes the converters page with temperature and wind converters plus explanatory conversion content.
+ * It also owns the temperature diagram asset path used in the learning section.
+ */
 function ConvertersPage() {
   return (
     <>

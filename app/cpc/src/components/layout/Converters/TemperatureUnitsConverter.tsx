@@ -2,7 +2,7 @@ import {
   TEMPERATURE_UNITS,
   convertAllUnits,
   type TemperatureUnit,
-} from '../../../utils/Converters/temperatureConversion';
+} from '../../../utils/Converters/TemperatureConversion';
 import { useUnitsConverter } from '../../../hooks/useUnitsConverter';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';
@@ -10,6 +10,10 @@ import NumberInput from '../../ui/NumberInput';
 import SelectField from '../../ui/SelectField';
 import ResultsTable from '../../ui/ResultsTable';
 
+/**
+ * Provides the temperature conversion form and result table for all supported temperature scales.
+ * It delegates conversion state to the shared units converter hook and formats empty results for display.
+ */
 function TemperatureUnitsConverter() {
   const {
     valueInput,

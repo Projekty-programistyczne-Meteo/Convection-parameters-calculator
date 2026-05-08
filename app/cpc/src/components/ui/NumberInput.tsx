@@ -1,5 +1,3 @@
-// src/components/ui/NumberInput.tsx
-
 type NumberInputProps = {
   id: string;
   label: string;
@@ -8,6 +6,10 @@ type NumberInputProps = {
   onChange: (value: string) => void;
 };
 
+/**
+ * Shared numeric input component with label, placeholder, and controlled value wiring.
+ * Calculator and converter forms use it to keep decimal entry styling and behavior consistent.
+ */
 function NumberInput({
   id,
   label,

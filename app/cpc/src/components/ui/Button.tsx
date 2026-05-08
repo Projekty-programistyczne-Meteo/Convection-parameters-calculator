@@ -1,11 +1,13 @@
-// src/components/ui/Button.tsx
-
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
 };
 
+/**
+ * Shared styled button component that preserves native button props while applying the app visual style.
+ * It centralizes button sizing, colors, hover behavior, and default button type for form-safe reuse.
+ */
 function Button({
   children,
   type = 'button',

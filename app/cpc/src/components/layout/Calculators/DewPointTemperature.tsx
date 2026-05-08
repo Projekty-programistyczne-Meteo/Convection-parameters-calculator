@@ -1,13 +1,17 @@
 import {
   calculateDewPointTemperature,
   type DewPointTemperatureResult,
-} from '../../../utils/Calculators/dewPointTemperatureCalculator';
+} from '../../../utils/Calculators/DewPointTemperatureCalculator';
 import { useCalculatorForm } from '../../../hooks/useCalculatorForm';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';
 import NumberInput from '../../ui/NumberInput';
 import CalculationResultBox from '../../ui/CalculationResultBox';
 
+/**
+ * Renders the dew point temperature calculator from air temperature and relative humidity inputs.
+ * It keeps the form wiring local while delegating parsing and result state to the calculator hook.
+ */
 function DewPointTemperature() {
   const { fields, result, setField, handleCalculate } = useCalculatorForm<
     {

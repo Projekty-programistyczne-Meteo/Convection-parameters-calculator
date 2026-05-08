@@ -1,5 +1,3 @@
-// src/components/ui/SelectField.tsx
-
 type SelectOption<T extends string> = {
   id: T;
   label: string;
@@ -13,6 +11,10 @@ type SelectFieldProps<T extends string> = {
   onChange: (value: T) => void;
 };
 
+/**
+ * Shared select input component for choosing one typed option from a list.
+ * It keeps the generic option id type while providing consistent label, styling, and dropdown affordance.
+ */
 function SelectField<T extends string>({
   id,
   label,

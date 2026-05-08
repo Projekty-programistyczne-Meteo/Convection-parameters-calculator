@@ -1,13 +1,17 @@
 import {
   calculateUpwardVerticalVelocity,
   type UpwardVerticalVelocityResult,
-} from '../../../utils/Calculators/upwardVerticalVelocityCalculator';
+} from '../../../utils/Calculators/UpwardVerticalVelocityCalculator';
 import { useCalculatorForm } from '../../../hooks/useCalculatorForm';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';
 import NumberInput from '../../ui/NumberInput';
 import CalculationResultBox from '../../ui/CalculationResultBox';
 
+/**
+ * Renders the upward vertical velocity calculator from a CAPE value.
+ * It shares the same non-negative CAPE validation pattern as other velocity calculators.
+ */
 function UpwardVerticalVelocity() {
   const { fields, result, setField, handleCalculate } = useCalculatorForm<
     { cape: string },

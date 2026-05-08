@@ -1,13 +1,17 @@
 import {
   calculateUpdraftStrenght,
   type UpdraftStrenghtResult,
-} from '../../../utils/Calculators/updraftStrenghtCalculator';
+} from '../../../utils/Calculators/UpdraftStrenghtCalculator';
 import { useCalculatorForm } from '../../../hooks/useCalculatorForm';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';
 import NumberInput from '../../ui/NumberInput';
 import CalculationResultBox from '../../ui/CalculationResultBox';
 
+/**
+ * Renders the maximum theoretical updraft speed calculator from a CAPE value.
+ * It validates CAPE as non-negative before showing the calculated Wmax result.
+ */
 function UpdraftStrenght() {
   const { fields, result, setField, handleCalculate } = useCalculatorForm<
     { cape: string },

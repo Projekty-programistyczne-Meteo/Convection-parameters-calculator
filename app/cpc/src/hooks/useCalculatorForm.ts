@@ -1,5 +1,3 @@
-// src/hooks/useCalculatorForm.ts
-
 import { useState } from 'react';
 
 type PrimitiveFields = Record<string, string>;
@@ -11,6 +9,10 @@ type UseCalculatorFormConfig<TFields extends PrimitiveFields, TResult> = {
   validate?: (values: ParsedFields<TFields>) => boolean;
 };
 
+/**
+ * Manages calculator form fields, numeric parsing, optional validation, and computed result state.
+ * Calculator components use this hook to avoid repeating input parsing and invalid-value handling.
+ */
 export function useCalculatorForm<TFields extends PrimitiveFields, TResult>({
   initialFields,
   calculate,
@@ -19,6 +21,9 @@ export function useCalculatorForm<TFields extends PrimitiveFields, TResult>({
   const [fields, setFields] = useState<TFields>(initialFields);
   const [result, setResult] = useState<TResult | null>(null);
 
+  /**
+   * Updates one named form field while keeping the remaining field values unchanged.
+   */
   const setField = <K extends keyof TFields>(key: K, value: string) => {
     setFields((prev) => ({
       ...prev,
@@ -26,6 +31,9 @@ export function useCalculatorForm<TFields extends PrimitiveFields, TResult>({
     }));
   };
 
+  /**
+   * Parses current field strings, validates numeric input, and stores the calculated result.
+   */
   const handleCalculate = () => {
     const parsedValues = Object.entries(fields).reduce((acc, [key, value]) => {
       acc[key as keyof TFields] = Number(value.replace(',', '.'));

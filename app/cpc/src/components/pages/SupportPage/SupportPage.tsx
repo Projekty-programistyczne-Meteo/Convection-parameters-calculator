@@ -1,5 +1,9 @@
 import Hero from '../../layout/Hero';
 
+/**
+ * Composes the support page with the shared hero and support content area.
+ * This route-level component is ready for future contact, help, or troubleshooting details.
+ */
 function SupportPage() {
   return (
     <>

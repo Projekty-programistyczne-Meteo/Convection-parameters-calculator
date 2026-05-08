@@ -8,6 +8,10 @@ import LiftingCondensationLevel from '../../layout/Calculators/LiftingCondensati
 import DewPointTemperature from '../../layout/Calculators/DewPointTemperature';
 import UpwardVerticalVelocity from '../../layout/Calculators/UpwardVerticalVelocity';
 
+/**
+ * Composes the calculators page by stacking every meteorological calculator section after the hero.
+ * It works as the route-level aggregator for all calculator components.
+ */
 function CalculatorsPage() {
   return (
     <>
