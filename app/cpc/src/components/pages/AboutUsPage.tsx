@@ -1,4 +1,4 @@
-import Hero from '../../layout/Hero';
+import Hero from '../layout/Hero';
 
 /**
  * Composes the About Us page with the shared hero and page-specific content area.

@@ -1,6 +1,6 @@
-import Hero from '../../layout/Hero';
-import TemperatureUnitsConverter from '../../layout/Converters/TemperatureUnitsConverter';
-import WindUnitsConverter from '../../layout/Converters/WindUnitsConverter';
+import Hero from '../layout/Hero';
+import TemperatureUnitsConverter from '../layout/Converters/TemperatureUnitsConverter';
+import WindUnitsConverter from '../layout/Converters/WindUnitsConverter';
 
 const baseUrl = import.meta.env.BASE_URL;
 

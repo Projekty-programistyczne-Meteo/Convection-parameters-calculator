@@ -1,4 +1,4 @@
-import Hero from '../../layout/Hero';
+import Hero from '../layout/Hero';
 
 /**
  * Composes the support page with the shared hero and support content area.

@@ -1,4 +1,4 @@
-import Hero from '../../layout/Hero';
+import Hero from '../layout/Hero';
 
 /**
  * Composes the home page with the shared hero and the current landing content section.

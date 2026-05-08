@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 /// <reference path="../support/component.ts" />
 
-import CalculatorsPage from '../../../../src/components/pages/CalculatorPage/CalculatorsPage';
+import CalculatorsPage from '../../../../src/components/pages/CalculatorsPage';
 
 describe('CalculatorsPage', () => {
   it('renders Calculators page', () => {

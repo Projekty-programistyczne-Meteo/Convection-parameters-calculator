@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 /// <reference path="../support/component.ts" />
 
-import SupportPage from '../../../../src/components/pages/SupportPage/SupportPage';
+import SupportPage from '../../../../src/components/pages/SupportPage';
 
 describe('SupportPage', () => {
   it('renders Support page', () => {

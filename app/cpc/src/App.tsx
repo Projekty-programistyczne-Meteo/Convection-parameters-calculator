@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import Navbar from './components/layout/Navbar';
-import MainPage from './components/pages/MainPage/MainPage';
-import CalculatorsPage from './components/pages/CalculatorPage/CalculatorsPage';
-import ConvertersPage from './components/pages/ConvertersPage/ConvertersPage';
-import AboutUsPage from './components/pages/AboutUsPage/AboutUsPage';
-import SupportPage from './components/pages/SupportPage/SupportPage';
+import MainPage from './components/pages/MainPage';
+import CalculatorsPage from './components/pages/CalculatorsPage';
+import ConvertersPage from './components/pages/ConvertersPage';
+import AboutUsPage from './components/pages/AboutUsPage';
+import SupportPage from './components/pages/SupportPage';
 
 /**
  * Root application component that controls which page is visible from the current hash route.
