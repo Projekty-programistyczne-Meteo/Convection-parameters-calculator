@@ -107,10 +107,10 @@ function Footer() {
                 Contact:
               </h3>
               <a
-                href="mailto:cpc.jpfs@gmail.com"
+                href="mailto:cpc.jpfs.support@gmail.com"
                 className="mt-3 inline-block text-xs md:text-sm text-stone-200 underline underline-offset-4 transition hover:text-white"
               >
-                Email: cpc.jpfs@gmail.com
+                cpc.jpfs.support@gmail.com
               </a>
             </div>
 
