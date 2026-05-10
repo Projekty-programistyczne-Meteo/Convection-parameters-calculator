@@ -129,7 +129,8 @@ function ContactForm() {
               className="mt-0.5 h-4 w-4 rounded border-zinc-300 text-sky-700 focus:ring-sky-600"
             />
             <span>
-              I agree to the processing of my data in accordance with the{' '}
+              <span className="text-red-900">★ </span>I agree to the processing
+              of my data in accordance with the{' '}
               <a
                 href="#"
                 className="font-medium text-stone-900 underline underline-offset-2"

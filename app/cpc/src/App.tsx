@@ -5,6 +5,7 @@ import CalculatorsPage from './components/pages/CalculatorsPage';
 import ConvertersPage from './components/pages/ConvertersPage';
 import AboutUsPage from './components/pages/AboutUsPage';
 import SupportPage from './components/pages/SupportPage';
+import Footer from './components/layout/Footer';
 
 /**
  * Root application component that controls which page is visible from the current hash route.
@@ -59,6 +60,7 @@ function App() {
     <div className="min-h-screen bg-white text-stone-900">
       <Navbar activeHref={activeHref} onNavigate={setActiveHref} />
       {renderPage()}
+      <Footer />
     </div>
   );
 }
