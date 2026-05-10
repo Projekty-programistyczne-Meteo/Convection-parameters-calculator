@@ -1,10 +1,10 @@
+import type { CalculatorResult } from '../../types/calculator.types';
+
 export type UpdraftStrenghtInput = {
   cape: number;
 };
 
-export type UpdraftStrenghtResult = {
-  wMax: number;
-};
+export type UpdraftStrenghtResult = CalculatorResult<'wMax'>;
 
 /**
  * Calculates theoretical maximum updraft speed from CAPE.

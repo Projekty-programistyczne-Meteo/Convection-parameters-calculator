@@ -1,3 +1,5 @@
+import type { CalculatorResult } from '../../types/calculator.types';
+
 export type DerechoCompositeParameterInput = {
   dcape: number;
   mucape: number;
@@ -5,9 +7,7 @@ export type DerechoCompositeParameterInput = {
   meanWind06km: number;
 };
 
-export type DerechoCompositeParameterResult = {
-  dcp: number;
-};
+export type DerechoCompositeParameterResult = CalculatorResult<'dcp'>;
 
 /**
  * Calculates the Derecho Composite Parameter from DCAPE, MUCAPE, shear, and mean wind inputs.

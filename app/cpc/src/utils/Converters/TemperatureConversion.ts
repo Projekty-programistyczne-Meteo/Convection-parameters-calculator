@@ -1,3 +1,5 @@
+import type { UnitInfo } from '../../types/converter.types';
+
 export type TemperatureUnit =
   | 'celsius'
   | 'kelvin'
@@ -8,10 +10,7 @@ export type TemperatureUnit =
   | 'reaumur'
   | 'romer';
 
-export type TemperatureUnitInfo = {
-  id: TemperatureUnit;
-  label: string;
-};
+export type TemperatureUnitInfo = UnitInfo<TemperatureUnit>;
 
 export const TEMPERATURE_UNITS: TemperatureUnitInfo[] = [
   { id: 'celsius', label: 'Celsius [°C]' },

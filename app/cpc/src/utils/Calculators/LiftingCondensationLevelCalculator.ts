@@ -1,11 +1,11 @@
+import type { CalculatorResult } from '../../types/calculator.types';
+
 export type LiftingCondensationLevelInput = {
   temperature: number;
   dewPoint: number;
 };
 
-export type LiftingCondensationLevelResult = {
-  lcl: number;
-};
+export type LiftingCondensationLevelResult = CalculatorResult<'lcl'>;
 
 /**
  * Estimates lifting condensation level from temperature and dew point spread.
