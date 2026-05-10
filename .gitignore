@@ -25,3 +25,6 @@ dist-ssr
 
 # Cypress
 screenshots
+
+# Local variables
+.env.local
