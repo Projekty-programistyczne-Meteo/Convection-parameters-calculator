@@ -1,11 +1,7 @@
-import type { CalculatorResult } from '../../types/calculator.types';
-
-export type DewPointTemperatureInput = {
-  temperature: number;
-  relativeHumidity: number;
-};
-
-export type DewPointTemperatureResult = CalculatorResult<'dewPointTemperature'>;
+import type {
+  DewPointTemperatureInput,
+  DewPointTemperatureResult,
+} from '../../types/calculator.types';
 
 /**
  * Calculates an approximate dew point temperature from air temperature and relative humidity.

@@ -1,15 +1,4 @@
-type SelectOption<T extends string> = {
-  id: T;
-  label: string;
-};
-
-type SelectFieldProps<T extends string> = {
-  id: string;
-  label: string;
-  value: T;
-  options: SelectOption<T>[];
-  onChange: (value: T) => void;
-};
+import type { SelectFieldProps } from '../../types/ui.types';
 
 /**
  * Shared select input component for choosing one typed option from a list.

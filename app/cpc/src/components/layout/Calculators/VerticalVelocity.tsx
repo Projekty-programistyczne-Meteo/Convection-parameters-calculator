@@ -1,7 +1,5 @@
-import {
-  calculateVerticalVelocity,
-  type VerticalVelocityResult,
-} from '../../../utils/Calculators/VerticalVelocityCalculator';
+import { calculateVerticalVelocity } from '../../../utils/Calculators/VerticalVelocityCalculator';
+import type { VerticalVelocityResult } from '../../../types/calculator.types';
 import { useCalculatorForm } from '../../../hooks/useCalculatorForm';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';

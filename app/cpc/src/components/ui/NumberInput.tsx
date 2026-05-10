@@ -1,10 +1,4 @@
-type NumberInputProps = {
-  id: string;
-  label: string;
-  value: string;
-  placeholder?: string;
-  onChange: (value: string) => void;
-};
+import type { NumberInputProps } from '../../types/ui.types';
 
 /**
  * Shared numeric input component with label, placeholder, and controlled value wiring.

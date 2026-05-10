@@ -1,8 +1,8 @@
 import {
   TEMPERATURE_UNITS,
   convertAllUnits,
-  type TemperatureUnit,
 } from '../../../utils/Converters/TemperatureConversion';
+import type { TemperatureUnit } from '../../../types/converter.types';
 import { useUnitsConverter } from '../../../hooks/useUnitsConverter';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';

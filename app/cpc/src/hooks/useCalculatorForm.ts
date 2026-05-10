@@ -1,13 +1,9 @@
 import { useState } from 'react';
-
-type PrimitiveFields = Record<string, string>;
-type ParsedFields<T extends PrimitiveFields> = { [K in keyof T]: number };
-
-type UseCalculatorFormConfig<TFields extends PrimitiveFields, TResult> = {
-  initialFields: TFields;
-  calculate: (values: ParsedFields<TFields>) => TResult;
-  validate?: (values: ParsedFields<TFields>) => boolean;
-};
+import type {
+  PrimitiveFields,
+  ParsedFields,
+  UseCalculatorFormConfig,
+} from '../types/calculator.types';
 
 /**
  * Manages calculator form fields, numeric parsing, optional validation, and computed result state.

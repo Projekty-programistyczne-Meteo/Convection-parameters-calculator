@@ -1,12 +1,6 @@
 import emailjs from '@emailjs/browser';
 import type { ContactFormData } from '../types/contactForm.types';
-
-type SendContactFormParams = {
-  serviceId: string;
-  templateId: string;
-  publicKey: string;
-  data: ContactFormData;
-};
+import type { SendContactFormParams } from '../types/services.types';
 
 function buildDisplayName(data: ContactFormData): string {
   const fullName = [data.firstName, data.lastName]

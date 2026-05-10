@@ -1,11 +1,7 @@
-import type { CalculatorResult } from '../../types/calculator.types';
-
-export type StabilityInput = {
-  ambientTemperature: number; // T(500 mb envir)
-  parcelTemperature: number; // T(500 mb parcel)
-};
-
-export type StabilityResult = CalculatorResult<'li'>;
+import type {
+  StabilityInput,
+  StabilityResult,
+} from '../../types/calculator.types';
 
 /**
  * Calculates the Lifted Index by subtracting parcel temperature from environmental temperature at 500 mb.

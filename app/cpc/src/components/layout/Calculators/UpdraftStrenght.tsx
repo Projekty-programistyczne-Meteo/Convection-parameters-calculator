@@ -1,7 +1,5 @@
-import {
-  calculateUpdraftStrenght,
-  type UpdraftStrenghtResult,
-} from '../../../utils/Calculators/UpdraftStrenghtCalculator';
+import { calculateUpdraftStrenght } from '../../../utils/Calculators/UpdraftStrenghtCalculator';
+import type { UpdraftStrenghtResult } from '../../../types/calculator.types';
 import { useCalculatorForm } from '../../../hooks/useCalculatorForm';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';

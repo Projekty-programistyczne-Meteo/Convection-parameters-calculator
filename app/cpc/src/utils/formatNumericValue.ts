@@ -1,7 +1,4 @@
-type FormatNumericValueOptions = {
-  digits?: number;
-  emptyValue?: string;
-};
+import type { FormatNumericValueOptions } from '../types/utils.types';
 
 /**
  * Formats finite numeric values with a fixed number of decimal places.

@@ -1,7 +1,5 @@
-import {
-  calculateDewPointTemperature,
-  type DewPointTemperatureResult,
-} from '../../../utils/Calculators/DewPointTemperatureCalculator';
+import { calculateDewPointTemperature } from '../../../utils/Calculators/DewPointTemperatureCalculator';
+import type { DewPointTemperatureResult } from '../../../types/calculator.types';
 import { useCalculatorForm } from '../../../hooks/useCalculatorForm';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';

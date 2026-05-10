@@ -1,16 +1,7 @@
-import type { UnitInfo } from '../../types/converter.types';
-
-export type TemperatureUnit =
-  | 'celsius'
-  | 'kelvin'
-  | 'fahrenheit'
-  | 'rankine'
-  | 'delisle'
-  | 'newton'
-  | 'reaumur'
-  | 'romer';
-
-export type TemperatureUnitInfo = UnitInfo<TemperatureUnit>;
+import type {
+  TemperatureUnit,
+  TemperatureUnitInfo,
+} from '../../types/converter.types';
 
 export const TEMPERATURE_UNITS: TemperatureUnitInfo[] = [
   { id: 'celsius', label: 'Celsius [°C]' },

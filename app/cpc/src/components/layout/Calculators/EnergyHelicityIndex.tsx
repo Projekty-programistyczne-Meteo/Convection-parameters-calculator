@@ -1,7 +1,5 @@
-import {
-  calculateEnergyHelicityIndex,
-  type EnergyHelicityIndexResult,
-} from '../../../utils/Calculators/EnergyHelicityIndexCalculator';
+import { calculateEnergyHelicityIndex } from '../../../utils/Calculators/EnergyHelicityIndexCalculator';
+import type { EnergyHelicityIndexResult } from '../../../types/calculator.types';
 import { useCalculatorForm } from '../../../hooks/useCalculatorForm';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';

@@ -45,13 +45,11 @@ export function loadTurnstileScript(onLoad?: () => void): void {
   document.head.appendChild(script);
 }
 
-export function renderTurnstileWidget(params: {
-  container: HTMLElement;
-  siteKey: string;
-  onSuccess: (token: string) => void;
-  onExpire: () => void;
-  onError: () => void;
-}): string | null {
+import type { TurnstileWidgetParams } from '../types/services.types';
+
+export function renderTurnstileWidget(
+  params: TurnstileWidgetParams,
+): string | null {
   if (!window.turnstile) {
     return null;
   }

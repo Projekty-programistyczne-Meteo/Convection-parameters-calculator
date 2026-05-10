@@ -1,10 +1,7 @@
-import type { CalculatorResult } from '../../types/calculator.types';
-
-export type UpwardVerticalVelocityInput = {
-  cape: number;
-};
-
-export type UpwardVerticalVelocityResult = CalculatorResult<'uvv'>;
+import type {
+  UpwardVerticalVelocityInput,
+  UpwardVerticalVelocityResult,
+} from '../../types/calculator.types';
 
 /**
  * Calculates theoretical upward vertical velocity from CAPE.

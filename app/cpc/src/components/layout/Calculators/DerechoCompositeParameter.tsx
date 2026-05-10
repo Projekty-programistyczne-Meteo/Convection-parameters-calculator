@@ -1,7 +1,5 @@
-import {
-  calculateDerechoCompositeParameter,
-  type DerechoCompositeParameterResult,
-} from '../../../utils/Calculators/DerechoCompositeParameterCalculator';
+import { calculateDerechoCompositeParameter } from '../../../utils/Calculators/DerechoCompositeParameterCalculator';
+import type { DerechoCompositeParameterResult } from '../../../types/calculator.types';
 import { useCalculatorForm } from '../../../hooks/useCalculatorForm';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';

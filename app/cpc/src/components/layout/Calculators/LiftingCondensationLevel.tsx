@@ -1,7 +1,5 @@
-import {
-  calculateLiftingCondensationLevel,
-  type LiftingCondensationLevelResult,
-} from '../../../utils/Calculators/LiftingCondensationLevelCalculator';
+import { calculateLiftingCondensationLevel } from '../../../utils/Calculators/LiftingCondensationLevelCalculator';
+import type { LiftingCondensationLevelResult } from '../../../types/calculator.types';
 import { useCalculatorForm } from '../../../hooks/useCalculatorForm';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';

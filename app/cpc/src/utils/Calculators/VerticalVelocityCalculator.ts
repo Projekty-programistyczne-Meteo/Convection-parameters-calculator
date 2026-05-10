@@ -1,10 +1,7 @@
-import type { CalculatorResult } from '../../types/calculator.types';
-
-export type VerticalVelocityInput = {
-  cin: number;
-};
-
-export type VerticalVelocityResult = CalculatorResult<'wLift'>;
+import type {
+  VerticalVelocityInput,
+  VerticalVelocityResult,
+} from '../../types/calculator.types';
 
 /**
  * Calculates theoretical lifting velocity from CIN.

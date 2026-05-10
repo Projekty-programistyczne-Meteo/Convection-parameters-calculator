@@ -1,20 +1,9 @@
 import { useState } from 'react';
-
-type UnitId = string;
-
-export interface UnitsConverterConfig<U extends UnitId> {
-  defaultUnit: U;
-  convertAll: (value: number, from: U) => Partial<Record<U, number>>;
-}
-
-export interface UseUnitsConverterReturn<U extends UnitId> {
-  valueInput: string;
-  selectedUnit: U;
-  results: Partial<Record<U, number>>;
-  setValueInput: (next: string) => void;
-  setSelectedUnit: (next: U) => void;
-  handleConvert: () => void;
-}
+import type {
+  UnitId,
+  UnitsConverterConfig,
+  UseUnitsConverterReturn,
+} from '../types/converter.types';
 
 /**
  * Manages a generic units converter form, selected source unit, and latest conversion results.

@@ -1,8 +1,4 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
-
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  children: ReactNode;
-};
+import type { ButtonProps } from '../../types/ui.types';
 
 /**
  * Shared styled button component that preserves native button props while applying the app visual style.

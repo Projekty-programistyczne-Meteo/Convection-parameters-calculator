@@ -1,7 +1,5 @@
-import {
-  calculateStabilityOfTheAtmosphere,
-  type StabilityResult,
-} from '../../../utils/Calculators/StabilityOfTheAtmosphereCalculator';
+import { calculateStabilityOfTheAtmosphere } from '../../../utils/Calculators/StabilityOfTheAtmosphereCalculator';
+import type { StabilityResult } from '../../../types/calculator.types';
 import { useCalculatorForm } from '../../../hooks/useCalculatorForm';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';

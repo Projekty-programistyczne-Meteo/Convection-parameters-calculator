@@ -1,8 +1,4 @@
-import type { UnitInfo } from '../../types/converter.types';
-
-export type WindUnit = 'mps' | 'kmh' | 'knot' | 'mph';
-
-export type WindUnitInfo = UnitInfo<WindUnit>;
+import type { WindUnit, WindUnitInfo } from '../../types/converter.types';
 
 export const WIND_UNITS: WindUnitInfo[] = [
   { id: 'mps', label: 'Meters per second [m/s]' },

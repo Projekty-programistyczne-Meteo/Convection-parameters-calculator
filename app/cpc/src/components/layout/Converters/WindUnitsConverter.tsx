@@ -1,8 +1,8 @@
 import {
   WIND_UNITS,
   convertAllWindUnits,
-  type WindUnit,
 } from '../../../utils/Converters/WindConvertion';
+import type { WindUnit } from '../../../types/converter.types';
 import { useUnitsConverter } from '../../../hooks/useUnitsConverter';
 import { formatNumericValue } from '../../../utils/formatNumericValue';
 import Button from '../../ui/Button';
