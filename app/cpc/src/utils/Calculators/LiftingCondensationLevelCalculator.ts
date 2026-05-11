@@ -1,14 +1,12 @@
-// src/utils/Calculators/LiftingCondensationLevelCalculator.ts
+import type {
+  LiftingCondensationLevelInput,
+  LiftingCondensationLevelResult,
+} from '../../types/calculator.types';
 
-export type LiftingCondensationLevelInput = {
-  temperature: number;
-  dewPoint: number;
-};
-
-export type LiftingCondensationLevelResult = {
-  lcl: number;
-};
-
+/**
+ * Estimates lifting condensation level from temperature and dew point spread.
+ * The result represents approximate cloud-base height in meters for the UI display.
+ */
 export function calculateLiftingCondensationLevel({
   temperature,
   dewPoint,

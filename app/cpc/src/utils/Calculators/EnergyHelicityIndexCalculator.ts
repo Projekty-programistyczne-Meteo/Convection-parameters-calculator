@@ -1,14 +1,12 @@
-// src/utils/Calculators/EnergyHelicityIndexCalculator.ts
+import type {
+  EnergyHelicityIndexInput,
+  EnergyHelicityIndexResult,
+} from '../../types/calculator.types';
 
-export type EnergyHelicityIndexInput = {
-  cape: number;
-  srh: number;
-};
-
-export type EnergyHelicityIndexResult = {
-  ehi: number;
-};
-
+/**
+ * Calculates Energy Helicity Index from CAPE and storm-relative helicity.
+ * It returns the EHI in an object to match the shared calculator result pattern.
+ */
 export function calculateEnergyHelicityIndex({
   cape,
   srh,

@@ -16,6 +16,10 @@ type NavbarProps = {
   onNavigate: (href: (typeof links)[number]['href']) => void;
 };
 
+/**
+ * Renders the responsive top navigation and highlights the currently active page link.
+ * It updates browser history, closes the mobile menu after navigation, and reports route changes upward.
+ */
 function Navbar({ activeHref, onNavigate }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 

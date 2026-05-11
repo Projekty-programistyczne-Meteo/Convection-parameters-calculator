@@ -1,16 +1,12 @@
-// src/utils/Calculators/DerechoCompositeParameterCalculator.ts
+import type {
+  DerechoCompositeParameterInput,
+  DerechoCompositeParameterResult,
+} from '../../types/calculator.types';
 
-export type DerechoCompositeParameterInput = {
-  dcape: number;
-  mucape: number;
-  shear06km: number;
-  meanWind06km: number;
-};
-
-export type DerechoCompositeParameterResult = {
-  dcp: number;
-};
-
+/**
+ * Calculates the Derecho Composite Parameter from DCAPE, MUCAPE, shear, and mean wind inputs.
+ * The returned object keeps the result shape stable for calculator UI components.
+ */
 export function calculateDerechoCompositeParameter({
   dcape,
   mucape,

@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
 import Navbar from './components/layout/Navbar';
-import MainPage from './components/pages/MainPage/MainPage';
-import CalculatorsPage from './components/pages/CalculatorPage/CalculatorsPage';
-import ConvertersPage from './components/pages/ConvertersPage/ConvertersPage';
-import AboutUsPage from './components/pages/AboutUsPage/AboutUsPage';
-import SupportPage from './components/pages/SupportPage/SupportPage';
+import MainPage from './components/pages/MainPage';
+import CalculatorsPage from './components/pages/CalculatorsPage';
+import ConvertersPage from './components/pages/ConvertersPage';
+import AboutUsPage from './components/pages/AboutUsPage';
+import SupportPage from './components/pages/SupportPage';
+import Footer from './components/layout/Footer';
 
+/**
+ * Root application component that controls which page is visible from the current hash route.
+ * It keeps navigation state in one place and passes the active route down to the navbar.
+ */
 function App() {
   const allowedHrefs = [
     '#',
@@ -55,6 +60,7 @@ function App() {
     <div className="min-h-screen bg-white text-stone-900">
       <Navbar activeHref={activeHref} onNavigate={setActiveHref} />
       {renderPage()}
+      <Footer />
     </div>
   );
 }

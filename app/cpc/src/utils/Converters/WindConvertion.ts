@@ -1,9 +1,4 @@
-export type WindUnit = 'mps' | 'kmh' | 'knot' | 'mph';
-
-export type WindUnitInfo = {
-  id: WindUnit;
-  label: string;
-};
+import type { WindUnit, WindUnitInfo } from '../../types/converter.types';
 
 export const WIND_UNITS: WindUnitInfo[] = [
   { id: 'mps', label: 'Meters per second [m/s]' },
@@ -20,6 +15,10 @@ export const WIND_UNITS: WindUnitInfo[] = [
 // [web:314][web:316][web:321][web:319]
 
 // 1) z jednostki źródłowej -> na m/s
+/**
+ * Converts a wind speed from the selected source unit into meters per second.
+ * Meters per second is the shared base unit for the wind conversion workflow.
+ */
 export function toMetersPerSecond(value: number, from: WindUnit): number {
   switch (from) {
     case 'mps':
@@ -39,6 +38,10 @@ export function toMetersPerSecond(value: number, from: WindUnit): number {
 }
 
 // 2) z m/s -> na docelową jednostkę
+/**
+ * Converts a meters-per-second wind speed into the requested target unit.
+ * This keeps all target conversions in one place for easier formula review.
+ */
 export function fromMetersPerSecond(valueMps: number, to: WindUnit): number {
   switch (to) {
     case 'mps':
@@ -58,6 +61,10 @@ export function fromMetersPerSecond(valueMps: number, to: WindUnit): number {
 }
 
 // 3) metoda łącząca – przelicza z wybranej jednostki na wszystkie cztery
+/**
+ * Converts one input wind speed into every supported wind unit.
+ * It preserves the original selected-unit value and uses meters per second as the intermediate base for the rest.
+ */
 export function convertAllWindUnits(
   inputValue: number,
   inputUnit: WindUnit,

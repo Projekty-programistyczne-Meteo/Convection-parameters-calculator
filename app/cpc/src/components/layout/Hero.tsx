@@ -1,5 +1,9 @@
 const baseUrl = import.meta.env.BASE_URL;
 
+/**
+ * Displays the shared hero banner with the project title and sky background image.
+ * Page components reuse it to keep the app introduction visually consistent.
+ */
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#0f5d93] text-white">

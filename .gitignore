@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Cypress
+screenshots
+
+# Local variables
+.env.local
