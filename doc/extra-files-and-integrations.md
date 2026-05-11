@@ -10,7 +10,7 @@ The `app/cpc` folder contains the React app and its project metadata.
 - `vite.config.ts` contains Vite integration details.
 - `eslint.config.js` contains lint rules and plugin setup.
 - `tsconfig.json`, `tsconfig.app.json`, and `tsconfig.node.json` contain TypeScript project settings.
-- `README.md` is still the default Vite template README and is not the main app documentation.
+- `README.md` contains intro documentation in main branch site.
 
 This documentation intentionally does not duplicate configuration details or add a run/setup guide.
 
