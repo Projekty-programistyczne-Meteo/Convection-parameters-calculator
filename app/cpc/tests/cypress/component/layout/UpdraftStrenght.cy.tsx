@@ -7,7 +7,7 @@ describe('UpdraftStrenght', () => {
   it('renders fields, submit and calculated result', () => {
     cy.mount(<UpdraftStrenght />);
 
-    cy.contains('2) Updraft Strenght').should('be.visible');
+    cy.contains('Updraft Strenght').should('be.visible');
     cy.contains('CAPE (J/kg)').should('be.visible');
 
     cy.get('#cape').type('200');

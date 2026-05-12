@@ -7,7 +7,7 @@ describe('LiftingCondensationLevel', () => {
   it('renders fields, submit and calculated result', () => {
     cy.mount(<LiftingCondensationLevel />);
 
-    cy.contains('6) Lifting Condensation Level').should('be.visible');
+    cy.contains('Lifting Condensation Level').should('be.visible');
     cy.contains('Temperature').should('be.visible');
     cy.contains('Dew point temperature').should('be.visible');
 

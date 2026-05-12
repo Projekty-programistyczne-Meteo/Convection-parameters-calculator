@@ -34,11 +34,13 @@ function EnergyHelicityIndex() {
       <div className="mx-auto max-w-6xl space-y-8">
         <header>
           <h2 className="text-xl font-bold tracking-tight text-stone-900 md:text-2xl">
-            4) Energy Helicity Index
+            Energy Helicity Index
           </h2>
           <p className="mt-2 text-xs text-stone-600 md:text-sm">
             Energy Helicity Index calculated from CAPE and storm-relative
-            helicity values.
+            helicity values. It helps assess the potential for rotating storms
+            and severe storm development by combining atmospheric instability
+            with wind shear.
           </p>
         </header>
 

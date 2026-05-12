@@ -13,13 +13,6 @@ function ConvertersPage() {
     <>
       <Hero />
       <main>
-        {/* <header className="bg-[#EEE8E8] px-6 py-10 md:px-12 lg:px-20">
-          <h2 className=" text-center text-base font-bold leading-relaxed text-stone-900">
-            This converter down below enables user to convert temperature units
-            from one selected unit to all available units (including less
-            popular).
-          </h2>
-        </header> */}
         <TemperatureUnitsConverter />
         <WindUnitsConverter />
         <article className="bg-[#EEE8E8] px-6 py-10 md:px-12 lg:px-20 text-stone-900">
@@ -242,6 +235,150 @@ function ConvertersPage() {
               className="inline-block break-all text-sky-800 underline underline-offset-4 transition hover:text-sky-950"
             >
               https://en.wikipedia.org/wiki/Conversion_of_scales_of_temperature
+            </a>
+          </section>
+        </article>
+
+        <article className="bg-[#EEE8E8] px-6 py-10 md:px-12 lg:px-20 text-stone-900">
+          <section className="space-y-6">
+            <h2 className="text-2xl font-bold leading-tight">
+              Explanation step by step of how to convert wind units between each
+              other.
+            </h2>
+
+            <p className="text-base leading-8">
+              To convert wind speeds between different units, the shared
+              intermediate unit is meters per second (m/s). First convert the
+              source speed into m/s, then convert from m/s to the target unit to
+              keep every conversion path consistent.
+            </p>
+
+            <p className="text-base leading-8">
+              For example: converting from kilometers per hour (km/h) to knots
+              (kt) goes through meters per second. This method is especially
+              useful for wind conversion because m/s is a standard
+              meteorological base unit.
+            </p>
+
+            <p className="text-base leading-8">
+              The block schema below represents an example of converting from
+              km/h to knots using m/s as the middle step.
+            </p>
+
+            <div className="flex justify-center py-4">
+              <img
+                src={`${baseUrl}diagrams/windExample.svg`}
+                alt="Diagram showing conversion from km/h to meters per second and then to knots"
+                className="h-auto w-full max-w-2xl"
+              />
+            </div>
+
+            <p className="text-base leading-8">
+              We recommend using meters per second (m/s) as the central
+              conversion unit for every wind speed calculation, even when direct
+              formulas exist between other units.
+            </p>
+
+            <div>
+              <p className="mb-3 text-base leading-8">
+                Supported wind speed units in this converter include:
+              </p>
+
+              <ul className="list-disc space-y-2 pl-6 text-base leading-7">
+                <li>Meters per second [m/s]</li>
+                <li>Kilometers per hour [km/h]</li>
+                <li>Knots [kt]</li>
+                <li>Miles per hour [mph]</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="mt-14 space-y-8">
+            <h2 className="text-2xl font-bold leading-tight">
+              Converting meters per second (m/s) to other units.
+            </h2>
+
+            <div className="space-y-6">
+              <div className="grid gap-3 md:grid-cols-[1.6fr_1fr] md:items-start">
+                <p className="text-base leading-7">
+                  1) Meters per second (m/s) → Kilometers per hour (km/h)
+                </p>
+                <p className="text-base leading-7 md:text-right">
+                  x[m/s] = x × 3.6 [km/h]
+                </p>
+              </div>
+
+              <div className="grid gap-3 md:grid-cols-[1.6fr_1fr] md:items-start">
+                <p className="text-base leading-7">
+                  2) Meters per second (m/s) → Knots (kt)
+                </p>
+                <p className="text-base leading-7 md:text-right">
+                  x[m/s] = x × 1.9426 [kt]
+                </p>
+              </div>
+
+              <div className="grid gap-3 md:grid-cols-[1.6fr_1fr] md:items-start">
+                <p className="text-base leading-7">
+                  3) Meters per second (m/s) → Miles per hour (mph)
+                </p>
+                <p className="text-base leading-7 md:text-right">
+                  x[m/s] = x × 2.237 [mph]
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="mt-14 space-y-8">
+            <h2 className="text-2xl font-bold leading-tight">
+              Converting other units to meters per second (m/s).
+            </h2>
+
+            <div className="space-y-6">
+              <div className="grid gap-3 md:grid-cols-[1.6fr_1fr] md:items-start">
+                <p className="text-base leading-7">
+                  1) Kilometers per hour (km/h) → Meters per second (m/s)
+                </p>
+                <p className="text-base leading-7 md:text-right">
+                  x[km/h] = x × 0.27778 [m/s]
+                </p>
+              </div>
+
+              <div className="grid gap-3 md:grid-cols-[1.6fr_1fr] md:items-start">
+                <p className="text-base leading-7">
+                  2) Knots (kt) → Meters per second (m/s)
+                </p>
+                <p className="text-base leading-7 md:text-right">
+                  x[kt] = x × 0.515 [m/s]
+                </p>
+              </div>
+
+              <div className="grid gap-3 md:grid-cols-[1.6fr_1fr] md:items-start">
+                <p className="text-base leading-7">
+                  3) Miles per hour (mph) → Meters per second (m/s)
+                </p>
+                <p className="text-base leading-7 md:text-right">
+                  x[mph] = x × 0.447 [m/s]
+                </p>
+              </div>
+            </div>
+          </section>
+          <section className="mt-14 space-y-4">
+            <h2 className="text-2xl font-bold leading-tight">
+              Converting units with no entering into meters (m/s) scale
+            </h2>
+
+            <p className="text-base leading-8">
+              Table of transitions between some of the physical quantities (not
+              necessarily through meters per second) is located on the website:
+            </p>
+
+            <a
+              href="https://www.weather.gov/epz/wxcalc_windconvert"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block break-all text-sky-800 underline underline-offset-4 transition hover:text-sky-950"
+            >
+              https://www.weather.gov/epz/wxcalc_windconvert
             </a>
           </section>
         </article>

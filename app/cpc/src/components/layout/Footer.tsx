@@ -130,7 +130,7 @@ function Footer() {
 
             <div className="flex items-center gap-6 pt-2">
               <a
-                href="https://example.com"
+                href="https://www.facebook.com/lowcyburz"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -139,7 +139,7 @@ function Footer() {
                 <img
                   src={`${baseUrl}/favicons/facebook.png`}
                   alt="Facebook"
-                  className="h-9 w-9 object-contain"
+                  className="h-10 w-10 object-contain"
                 />
               </a>
 
@@ -158,7 +158,7 @@ function Footer() {
               </a>
 
               <a
-                href="https://example.com"
+                href="https://www.instagram.com/polscylowcyburz/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"

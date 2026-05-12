@@ -12,7 +12,6 @@ describe('App', () => {
     cy.contains('Calculators').should('be.visible');
     cy.contains('Converters').should('be.visible');
     cy.contains('Support').should('be.visible');
-    cy.contains('Hello mainPage!').should('be.visible');
     cy.contains('Website Designers:').should('be.visible');
   });
 
@@ -21,8 +20,8 @@ describe('App', () => {
 
     cy.contains('button', 'Converters').click();
 
-    cy.contains('1) Temperature Units Converter').should('be.visible');
-    cy.contains('2) Wind Units Converter').should('be.visible');
+    cy.contains('Temperature Units Converter').should('be.visible');
+    cy.contains('Wind Units Converter').should('be.visible');
   });
 });
 

@@ -34,11 +34,13 @@ function DewPointTemperature() {
       <div className="mx-auto max-w-6xl space-y-8">
         <header>
           <h2 className="text-xl font-bold tracking-tight text-stone-900 md:text-2xl">
-            7) Td
+            Td
           </h2>
           <p className="mt-2 text-xs text-stone-600 md:text-sm">
             Dew point temperature calculated from air temperature and relative
-            humidity.
+            humidity. It indicates the temperature at which air becomes
+            saturated and condensation begins, which is essential for cloud and
+            fog prediction.
           </p>
         </header>
 

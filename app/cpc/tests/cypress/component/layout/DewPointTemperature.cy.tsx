@@ -7,7 +7,7 @@ describe('DewPointTemperature', () => {
   it('renders fields, submit and calculated result', () => {
     cy.mount(<DewPointTemperature />);
 
-    cy.contains('7) Td').should('be.visible');
+    cy.contains('Td').should('be.visible');
     cy.contains('Temperature').should('be.visible');
     cy.contains('Relative humidity').should('be.visible');
 

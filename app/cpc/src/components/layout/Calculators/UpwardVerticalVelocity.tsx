@@ -30,10 +30,12 @@ function UpwardVerticalVelocity() {
       <div className="mx-auto max-w-6xl space-y-8">
         <header>
           <h2 className="text-xl font-bold tracking-tight text-stone-900 md:text-2xl">
-            8) UVV (Upward Vertical Velocity)
+            UVV (Upward Vertical Velocity)
           </h2>
           <p className="mt-2 text-xs text-stone-600 md:text-sm">
-            Upward vertical velocity calculated from CAPE.
+            Upward vertical velocity calculated from CAPE. It gives an estimate
+            of how fast air parcels can rise in a buoyant atmosphere, which
+            affects storm organization and precipitation potential.
           </p>
         </header>
 

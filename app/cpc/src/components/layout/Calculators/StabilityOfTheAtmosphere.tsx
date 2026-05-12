@@ -34,11 +34,13 @@ function StabilityOfTheAtmosphere() {
       <div className="mx-auto max-w-6xl space-y-8">
         <header>
           <h2 className="text-xl font-bold tracking-tight text-stone-900 md:text-2xl">
-            1) Stability of the atmosphere
+            Stability of the atmosphere
           </h2>
           <p className="mt-2 text-xs text-stone-600 md:text-sm">
             Lifted Index (LI) calculated from the environmental and air parcel
-            temperature at 500 mb pressure level.
+            temperature at 500 mb pressure level. Negative values indicate
+            unstable conditions favorable for convection, while positive values
+            suggest more stable air.
           </p>
         </header>
 

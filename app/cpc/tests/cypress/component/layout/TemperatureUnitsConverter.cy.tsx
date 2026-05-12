@@ -7,7 +7,7 @@ describe('TemperatureUnitsConverter', () => {
   it('renders fields, submit and table', () => {
     cy.mount(<TemperatureUnitsConverter />);
 
-    cy.contains('1) Temperature Units Converter').should('be.visible');
+    cy.contains('Temperature Units Converter').should('be.visible');
     cy.contains('Temperature value:').should('be.visible');
     cy.contains('Temperature unit:').should('be.visible');
     cy.contains('Temperature Units').should('be.visible');

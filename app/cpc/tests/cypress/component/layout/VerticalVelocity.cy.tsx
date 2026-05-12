@@ -7,7 +7,7 @@ describe('VerticalVelocity', () => {
   it('renders fields, submit and calculated result', () => {
     cy.mount(<VerticalVelocity />);
 
-    cy.contains('3) Vertical velocity').should('be.visible');
+    cy.contains('Vertical velocity').should('be.visible');
     cy.contains('CIN (J/kg)').should('be.visible');
 
     cy.get('#cin').type('200');

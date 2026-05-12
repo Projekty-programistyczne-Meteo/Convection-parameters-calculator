@@ -30,10 +30,12 @@ function UpdraftStrenght() {
       <div className="mx-auto max-w-6xl space-y-8">
         <header>
           <h2 className="text-xl font-bold tracking-tight text-stone-900 md:text-2xl">
-            2) Updraft Strenght
+            Updraft Strenght
           </h2>
           <p className="mt-2 text-xs text-stone-600 md:text-sm">
-            Maximum theoretical updraft speed calculated from CAPE value.
+            Maximum theoretical updraft speed calculated from CAPE value. It
+            approximates the vertical motion available to rising air parcels in
+            unstable atmospheric conditions.
           </p>
         </header>
 
