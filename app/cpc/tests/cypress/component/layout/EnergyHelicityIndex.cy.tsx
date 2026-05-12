@@ -7,7 +7,7 @@ describe('EnergyHelicityIndex', () => {
   it('renders fields, submit and calculated result', () => {
     cy.mount(<EnergyHelicityIndex />);
 
-    cy.contains('4) Energy Helicity Index').should('be.visible');
+    cy.contains('Energy Helicity Index').should('be.visible');
     cy.contains('CAPE (J/kg)').should('be.visible');
     cy.contains('Storm-relative helicity').should('be.visible');
 

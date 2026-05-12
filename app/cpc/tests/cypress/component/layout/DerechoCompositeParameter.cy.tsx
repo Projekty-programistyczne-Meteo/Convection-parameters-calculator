@@ -7,7 +7,7 @@ describe('DerechoCompositeParameter', () => {
   it('renders fields, submit and calculated result', () => {
     cy.mount(<DerechoCompositeParameter />);
 
-    cy.contains('5) Derecho Composite Parameter').should('be.visible');
+    cy.contains('Derecho Composite Parameter').should('be.visible');
     cy.contains('DCAPE (J/kg)').should('be.visible');
     cy.contains('MUCAPE (J/kg)').should('be.visible');
     cy.get('#dcape').should('be.visible');

@@ -7,7 +7,7 @@ describe('StabilityOfTheAtmosphere', () => {
   it('renders fields, submit and calculated result', () => {
     cy.mount(<StabilityOfTheAtmosphere />);
 
-    cy.contains('1) Stability of the atmosphere').should('be.visible');
+    cy.contains('Stability of the atmosphere').should('be.visible');
     cy.contains('Ambient temperature').should('be.visible');
     cy.contains('Air parcel temperature').should('be.visible');
 

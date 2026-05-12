@@ -7,7 +7,7 @@ describe('WindUnitsConverter', () => {
   it('renders fields, submit and table', () => {
     cy.mount(<WindUnitsConverter />);
 
-    cy.contains('2) Wind Units Converter').should('be.visible');
+    cy.contains('Wind Units Converter').should('be.visible');
     cy.contains('Wind speed value:').should('be.visible');
     cy.contains('Wind speed unit:').should('be.visible');
     cy.contains('Wind Speed Units').should('be.visible');
