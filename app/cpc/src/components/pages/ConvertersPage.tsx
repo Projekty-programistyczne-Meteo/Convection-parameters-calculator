@@ -13,13 +13,6 @@ function ConvertersPage() {
     <>
       <Hero />
       <main>
-        {/* <header className="bg-[#EEE8E8] px-6 py-10 md:px-12 lg:px-20">
-          <h2 className=" text-center text-base font-bold leading-relaxed text-stone-900">
-            This converter down below enables user to convert temperature units
-            from one selected unit to all available units (including less
-            popular).
-          </h2>
-        </header> */}
         <TemperatureUnitsConverter />
         <WindUnitsConverter />
         <article className="bg-[#EEE8E8] px-6 py-10 md:px-12 lg:px-20 text-stone-900">

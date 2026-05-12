@@ -34,7 +34,7 @@ function LiftingCondensationLevel() {
       <div className="mx-auto max-w-6xl space-y-8">
         <header>
           <h2 className="text-xl font-bold tracking-tight text-stone-900 md:text-2xl">
-            6) Lifting Condensation Level
+            Lifting Condensation Level
           </h2>
           <p className="mt-2 text-xs text-stone-600 md:text-sm">
             Lifting condensation level calculated from air temperature and dew
