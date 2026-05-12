@@ -3,6 +3,9 @@ name: Deploy to (dev branch) GitHub Pages
 on:
   push:
     branches: [dev]
+  pull_request:
+    branches: [dev]
+    types: [opened, synchronize, reopened]
   workflow_dispatch:
 
 permissions:
@@ -59,14 +62,17 @@ jobs:
         run: npx cypress run --e2e
 
       - name: Setup Pages
+        if: github.event_name == 'push'
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
+        if: github.event_name == 'push'
         uses: actions/upload-pages-artifact@v3
         with:
           path: app/cpc/dist
 
   deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
     needs: full-build
     runs-on: ubuntu-latest
     environment:
