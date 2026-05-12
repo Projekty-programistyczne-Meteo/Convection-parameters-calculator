@@ -33,7 +33,9 @@ function UpdraftStrenght() {
             Updraft Strenght
           </h2>
           <p className="mt-2 text-xs text-stone-600 md:text-sm">
-            Maximum theoretical updraft speed calculated from CAPE value.
+            Maximum theoretical updraft speed calculated from CAPE value. It
+            approximates the vertical motion available to rising air parcels in
+            unstable atmospheric conditions.
           </p>
         </header>
 

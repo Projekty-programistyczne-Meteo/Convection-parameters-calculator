@@ -38,7 +38,8 @@ function LiftingCondensationLevel() {
           </h2>
           <p className="mt-2 text-xs text-stone-600 md:text-sm">
             Lifting condensation level calculated from air temperature and dew
-            point temperature.
+            point temperature. It estimates the approximate altitude where
+            rising air will become saturated and cloud base formation begins.
           </p>
         </header>
 

@@ -38,7 +38,9 @@ function StabilityOfTheAtmosphere() {
           </h2>
           <p className="mt-2 text-xs text-stone-600 md:text-sm">
             Lifted Index (LI) calculated from the environmental and air parcel
-            temperature at 500 mb pressure level.
+            temperature at 500 mb pressure level. Negative values indicate
+            unstable conditions favorable for convection, while positive values
+            suggest more stable air.
           </p>
         </header>
 

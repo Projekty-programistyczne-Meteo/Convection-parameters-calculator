@@ -44,7 +44,9 @@ function DerechoCompositeParameter() {
           </h2>
           <p className="mt-2 text-xs text-stone-600 md:text-sm">
             Derecho Composite Parameter calculated from DCAPE, MUCAPE, 0–6 km
-            shear, and 0–6 km mean wind.
+            shear, and 0–6 km mean wind. It is used to evaluate the potential
+            for long-lived convective windstorms and derecho-producing
+            environments.
           </p>
         </header>
 

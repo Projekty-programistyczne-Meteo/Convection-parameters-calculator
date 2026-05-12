@@ -158,7 +158,7 @@ function Footer() {
               </a>
 
               <a
-                href="https://example.com"
+                href="https://www.instagram.com/polscylowcyburz/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
