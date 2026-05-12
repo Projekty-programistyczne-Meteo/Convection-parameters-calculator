@@ -119,12 +119,12 @@ function Footer() {
                 Support us here:
               </h3>
               <a
-                href="https://example.com"
+                href="https://lowcyburz.pl/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-3 inline-block text-xs md:text-sm text-stone-200 underline underline-offset-4 transition hover:text-white"
               >
-                example.com
+                lowcyburz.pl
               </a>
             </div>
 
