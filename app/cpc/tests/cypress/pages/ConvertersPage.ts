@@ -1,12 +1,15 @@
 import { BasePage } from './BasePage';
 
 export class ConvertersPage extends BasePage {
+  /**
+   * Visit the converters route.
+   */
   visitConverters() {
     return this.visit('/#converters');
   }
 
   /**
-   * Select a converter from the menu
+   * Select a converter from the menu.
    */
   selectConverter(converterName: string) {
     cy.contains(converterName).should('be.visible');
@@ -14,15 +17,23 @@ export class ConvertersPage extends BasePage {
   }
 
   /**
-   * Fill the input field for conversion
+   * Fill the input field for conversion.
    */
   fillInputValue(value: string) {
-    cy.get('input[type="number"]').first().type(value);
+    cy.get('input[type="number"]').first().clear().type(value);
     return this;
   }
 
   /**
-   * Clear the input field
+   * Fill a converter input by selector.
+   */
+  fillInputBySelector(selector: string, value: string) {
+    cy.fillInputBySelector(selector, value);
+    return this;
+  }
+
+  /**
+   * Clear the input field.
    */
   clearInputValue() {
     cy.get('input[type="number"]').first().clear();
@@ -30,7 +41,7 @@ export class ConvertersPage extends BasePage {
   }
 
   /**
-   * Select a unit from dropdown
+   * Select a unit from dropdown.
    */
   selectFromUnit(unit: string) {
     cy.get('select').first().select(unit);
@@ -38,7 +49,15 @@ export class ConvertersPage extends BasePage {
   }
 
   /**
-   * Select a unit to convert to
+   * Select a converter unit by selector.
+   */
+  selectUnitBySelector(selector: string, unit: string) {
+    cy.get(selector).select(unit);
+    return this;
+  }
+
+  /**
+   * Select a unit to convert to.
    */
   selectToUnit(unit: string) {
     cy.get('select').eq(1).select(unit);
@@ -46,7 +65,15 @@ export class ConvertersPage extends BasePage {
   }
 
   /**
-   * Perform a conversion
+   * Click a convert button by index.
+   */
+  clickConvertByIndex(index: number) {
+    cy.clickMainButton('Convert', index);
+    return this;
+  }
+
+  /**
+   * Perform a conversion.
    */
   convertValue(fromValue: string, fromUnit: string, toUnit: string) {
     this.selectFromUnit(fromUnit);
@@ -56,7 +83,7 @@ export class ConvertersPage extends BasePage {
   }
 
   /**
-   * Verify conversion result is displayed
+   * Verify conversion result is displayed.
    */
   shouldShowConvertedValue(value: string) {
     cy.contains(value).should('be.visible');
@@ -64,7 +91,15 @@ export class ConvertersPage extends BasePage {
   }
 
   /**
-   * Get the converted value from the results section
+   * Verify all conversion results are displayed.
+   */
+  shouldShowConvertedValues(values: string[]) {
+    cy.shouldShowTexts(values);
+    return this;
+  }
+
+  /**
+   * Get the converted value from the results section.
    */
   getConvertedValue(): Cypress.Chainable<string> {
     return cy
@@ -74,7 +109,7 @@ export class ConvertersPage extends BasePage {
   }
 
   /**
-   * Verify converter form is visible
+   * Verify converter form is visible.
    */
   shouldShowConverterForm() {
     cy.get('input[type="number"]').should('be.visible');

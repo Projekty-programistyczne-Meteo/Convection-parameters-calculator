@@ -7,9 +7,11 @@ describe('TemperatureUnitsConverter Component', () => {
   it('renders converter form with all input fields', () => {
     cy.mount(<TemperatureUnitsConverter />);
     
-    cy.contains('Temperature Units Converter').should('be.visible');
-    cy.contains('Temperature value:').should('be.visible');
-    cy.contains('Temperature unit:').should('be.visible');
+    cy.shouldShowTexts([
+      'Temperature Units Converter',
+      'Temperature value:',
+      'Temperature unit:',
+    ]);
 
     cy.get('#temperatureValue').should('be.visible');
     cy.get('select').should('be.visible');
@@ -24,9 +26,7 @@ describe('TemperatureUnitsConverter Component', () => {
   it('renders results table', () => {
     cy.mount(<TemperatureUnitsConverter />);
 
-    cy.contains('Converted Values').should('be.visible');
-    cy.contains('Celsius').should('be.visible');
-    cy.contains('Kelvin').should('be.visible');
+    cy.shouldShowTexts(['Converted Values', 'Celsius', 'Kelvin']);
   });
 });
 

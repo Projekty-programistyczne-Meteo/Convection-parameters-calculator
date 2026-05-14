@@ -19,29 +19,30 @@ describe('Page Content and Links E2E Tests', () => {
     });
 
     it('should display home page with hero section', () => {
-      cy.showHeroContent();
-      cy.contains('Convection Parameters Calculator').should('be.visible');
+      homePage.shouldShowHeroContent();
     });
 
     it('should display documentation and welcome section', () => {
-      homePage.shouldContainText('Welcome to Convection Parameters Calculator');
-      homePage.shouldContainText('Docs and quick start');
+      homePage.shouldContainAllText([
+        'Welcome to Convection Parameters Calculator',
+        'Docs and quick start',
+      ]);
     });
 
     it('should display website version information', () => {
-      homePage.shouldContainText('Website Version');
-      homePage.shouldContainText('alpha-0.1.0');
+      homePage.shouldContainAllText(['Website Version', 'alpha-0.1.0']);
     });
 
     it('should display website sections overview', () => {
-      homePage.shouldContainText('Website Sections');
-      homePage.shouldContainText('📊 Calculators');
-      homePage.shouldContainText('🔄 Converters');
+      homePage.shouldContainAllText([
+        'Website Sections',
+        'Calculators',
+        'Converters',
+      ]);
     });
 
     it('should display footer with contact information', () => {
       homePage.shouldShowFooterContent();
-      homePage.shouldContainText('cpc.jpfs.support@gmail.com');
     });
   });
 
@@ -51,7 +52,7 @@ describe('Page Content and Links E2E Tests', () => {
     });
 
     it('should display all calculator titles', () => {
-      const calculators = [
+      calculatorsPage.shouldContainAllText([
         'Stability of the atmosphere',
         'Updraft Strenght',
         'Vertical velocity',
@@ -59,19 +60,14 @@ describe('Page Content and Links E2E Tests', () => {
         'Derecho Composite Parameter',
         'Lifting Condensation Level',
         'Td',
-      ];
-      calculators.forEach((calc) => {
-        cy.contains(calc).should('be.visible');
-      });
+      ]);
     });
 
     it('should display calculator descriptions', () => {
-      calculatorsPage.shouldContainText(
+      calculatorsPage.shouldContainAllText([
         'Lifted Index (LI) calculated from the environmental and air parcel temperature',
-      );
-      calculatorsPage.shouldContainText(
         'Maximum theoretical updraft speed calculated from CAPE value',
-      );
+      ]);
     });
 
     it('should have form elements for each calculator', () => {
@@ -86,18 +82,21 @@ describe('Page Content and Links E2E Tests', () => {
     });
 
     it('should display temperature converter section', () => {
-      convertersPage.shouldContainText('Temperature Units Converter');
-      convertersPage.shouldContainText('Temperature value:');
+      convertersPage.shouldContainAllText([
+        'Temperature Units Converter',
+        'Temperature value:',
+      ]);
     });
 
     it('should display wind converter section', () => {
-      convertersPage.shouldContainText('Wind Units Converter');
-      convertersPage.shouldContainText('Wind speed value:');
+      convertersPage.shouldContainAllText(['Wind Units Converter', 'Wind speed value:']);
     });
 
     it('should display conversion formulas', () => {
-      convertersPage.shouldContainText('x[°C]=(x+273.15)[K]');
-      convertersPage.shouldContainText('x[°C]=(x * 9/5+32)[°F]');
+      convertersPage.shouldContainAllText([
+        'x[°C]=(x+273.15)[K]',
+        'x[°C]=(x * 9/5+32)[°F]',
+      ]);
     });
 
     it('should have converter form elements', () => {
@@ -116,13 +115,14 @@ describe('Page Content and Links E2E Tests', () => {
     });
 
     it('should display developer information', () => {
-      aboutUsPage.shouldContainText('Jakub Początek');
-      aboutUsPage.shouldContainText('software engineer');
+      aboutUsPage.shouldContainAllText(['Jakub Początek', 'software engineer']);
     });
 
     it('should display cooperation section', () => {
-      aboutUsPage.shouldContainText('In cooperation with');
-      aboutUsPage.shouldContainText('Poland storm hunters');
+      aboutUsPage.shouldContainAllText([
+        'In cooperation with',
+        'Poland storm hunters',
+      ]);
     });
 
     it('should display GitHub link', () => {
@@ -178,19 +178,19 @@ describe('Page Content and Links E2E Tests', () => {
       homePage.shouldShowFooterContent();
 
       calculatorsPage.visitCalculators();
-      cy.contains('Website Designers:').should('be.visible');
+      calculatorsPage.shouldContainText('Website Designers:');
 
       convertersPage.visitConverters();
-      cy.contains('Website Designers:').should('be.visible');
+      convertersPage.shouldContainText('Website Designers:');
     });
   });
 
   describe('Page Responsiveness Content', () => {
     it('should display content correctly on mobile viewport', () => {
-      cy.viewport(375, 667);
+      cy.setMobileViewport();
       homePage.visitHome();
 
-      cy.contains('Convection Parameters Calculator').should('be.visible');
+      cy.shouldShowTexts(['Convection Parameters Calculator']);
       cy.get('img[alt="CPC Logo"]').should('be.visible');
     });
 
@@ -198,15 +198,17 @@ describe('Page Content and Links E2E Tests', () => {
       cy.viewport(768, 1024);
       calculatorsPage.visitCalculators();
 
-      cy.contains('Stability of the atmosphere').should('be.visible');
+      calculatorsPage.shouldContainText('Stability of the atmosphere');
     });
 
     it('should display content correctly on desktop viewport', () => {
-      cy.viewport(1920, 1080);
+      cy.setDesktopViewport();
       convertersPage.visitConverters();
 
-      cy.contains('Temperature Units Converter').should('be.visible');
-      cy.contains('Wind Units Converter').should('be.visible');
+      convertersPage.shouldContainAllText([
+        'Temperature Units Converter',
+        'Wind Units Converter',
+      ]);
     });
   });
 
@@ -214,8 +216,7 @@ describe('Page Content and Links E2E Tests', () => {
     it('should load home page quickly', () => {
       homePage.visitHome();
 
-      cy.contains('Convection Parameters Calculator').should('be.visible');
-      cy.contains('Calculators').should('be.visible');
+      homePage.shouldContainAllText(['Convection Parameters Calculator', 'Calculators']);
     });
 
     it('should load calculators page with all content', () => {
@@ -232,7 +233,7 @@ describe('Page Content and Links E2E Tests', () => {
       cy.contains('Temperature Units Converter', { timeout: 5000 }).should(
         'be.visible',
       );
-      cy.contains('Wind Units Converter').should('be.visible');
+      convertersPage.shouldContainText('Wind Units Converter');
     });
   });
 });

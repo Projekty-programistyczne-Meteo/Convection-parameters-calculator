@@ -1,12 +1,15 @@
 import { BasePage } from './BasePage';
 
 export class HomePage extends BasePage {
+  /**
+   * Visit the home route.
+   */
   visitHome() {
     return this.visit('/');
   }
 
   /**
-   * Verify home page hero content is visible
+   * Verify home page hero content is visible.
    */
   shouldShowHeroContent() {
     cy.showHeroContent();
@@ -14,7 +17,7 @@ export class HomePage extends BasePage {
   }
 
   /**
-   * Click on a specific calculator link
+   * Click on a specific calculator link.
    */
   clickCalculatorLink(calculatorName: string) {
     cy.contains('a', calculatorName).click();
@@ -22,7 +25,7 @@ export class HomePage extends BasePage {
   }
 
   /**
-   * Click on a specific converter link
+   * Click on a specific converter link.
    */
   clickConverterLink(converterName: string) {
     cy.contains('a', converterName).click();
@@ -30,24 +33,18 @@ export class HomePage extends BasePage {
   }
 
   /**
-   * Verify all navigation buttons are clickable
+   * Verify all navigation buttons are clickable.
    */
   shouldHaveNavigationButtons() {
-    cy.contains('button', 'Home').should('be.visible');
-    cy.contains('button', 'Calculators').should('be.visible');
-    cy.contains('button', 'Converters').should('be.visible');
-    cy.contains('button', 'About Us').should('be.visible');
-    cy.contains('button', 'Support').should('be.visible');
+    cy.shouldShowTexts(['Home', 'Calculators', 'Converters', 'About Us', 'Support']);
     return this;
   }
 
   /**
-   * Verify featured content sections are visible
+   * Verify featured content sections are visible.
    */
   shouldShowFeaturedSections(sectionNames: string[]) {
-    sectionNames.forEach((name) => {
-      cy.contains(name).should('be.visible');
-    });
+    cy.shouldShowTexts(sectionNames);
     return this;
   }
 }

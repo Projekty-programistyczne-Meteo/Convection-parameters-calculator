@@ -7,9 +7,11 @@ describe('WindUnitsConverter Component', () => {
   it('renders converter form with all input fields', () => {
     cy.mount(<WindUnitsConverter />);
     
-    cy.contains('Wind Units Converter').should('be.visible');
-    cy.contains('Wind speed value:').should('be.visible');
-    cy.contains('Wind speed unit:').should('be.visible');
+    cy.shouldShowTexts([
+      'Wind Units Converter',
+      'Wind speed value:',
+      'Wind speed unit:',
+    ]);
 
     cy.get('#windValue').should('be.visible');
     cy.get('select').should('be.visible');
@@ -24,12 +26,12 @@ describe('WindUnitsConverter Component', () => {
   it('renders results table', () => {
     cy.mount(<WindUnitsConverter />);
 
-    cy.contains('Converted Values').should('be.visible');
-    cy.contains('Meters per second').should('be.visible');
-    cy.contains('Kilometers per hour').should('be.visible');
+    cy.shouldShowTexts([
+      'Converted Values',
+      'Meters per second',
+      'Kilometers per hour',
+    ]);
   });
 });
-
-export {};
 
 export {};

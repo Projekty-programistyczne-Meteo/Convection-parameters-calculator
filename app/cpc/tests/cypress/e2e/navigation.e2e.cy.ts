@@ -13,87 +13,95 @@ describe('Navigation and Menu E2E Tests', () => {
   const aboutUsPage = new AboutUsPage();
   const supportPage = new SupportPage();
 
+  const pages = [
+    {
+      name: 'Home',
+      buttonText: 'Home',
+      visitPath: '/',
+      route: '',
+      assertRoute: () => homePage.shouldBeOnRoute(''),
+      visibleText: 'Convection Parameters Calculator',
+    },
+    {
+      name: 'Calculators',
+      buttonText: 'Calculators',
+      visitPath: '/#calculators',
+      route: '#calculators',
+      assertRoute: () => calculatorsPage.shouldBeOnRoute('#calculators'),
+      visibleText: 'Stability of the atmosphere',
+    },
+    {
+      name: 'Converters',
+      buttonText: 'Converters',
+      visitPath: '/#converters',
+      route: '#converters',
+      assertRoute: () => convertersPage.shouldBeOnRoute('#converters'),
+      visibleText: 'Temperature Units Converter',
+    },
+    {
+      name: 'About Us',
+      buttonText: 'About Us',
+      visitPath: '/#about-us',
+      route: '#about-us',
+      assertRoute: () => aboutUsPage.shouldBeOnRoute('#about-us'),
+      visibleText: 'Developers and content creators',
+    },
+    {
+      name: 'Support',
+      buttonText: 'Support',
+      visitPath: '/#support',
+      route: '#support',
+      assertRoute: () => supportPage.shouldBeOnRoute('#support'),
+      visibleText: "We'd love to hear from you",
+    },
+  ];
+
   beforeEach(() => {
+    cy.setDesktopViewport();
     homePage.visitHome();
   });
 
   describe('Navigation via navbar buttons', () => {
-    it('should navigate to Calculators page from Home', () => {
-      homePage.navigateViaNavbar('Calculators');
-      calculatorsPage.shouldBeOnRoute('#calculators');
-      cy.contains('Stability of the atmosphere').should('be.visible');
-    });
+    pages.forEach((sourcePage) => {
+      pages
+        .filter((targetPage) => targetPage.route !== sourcePage.route)
+        .forEach((targetPage) => {
+          it(`should navigate from ${sourcePage.name} to ${targetPage.name}`, () => {
+            cy.visit(sourcePage.visitPath);
 
-    it('should navigate to Converters page from Home', () => {
-      homePage.navigateViaNavbar('Converters');
-      convertersPage.shouldBeOnRoute('#converters');
-      cy.contains('Temperature Units Converter').should('be.visible');
-    });
+            cy.clickVisibleNavButton(targetPage.buttonText);
 
-    it('should navigate to About Us page from Home', () => {
-      homePage.navigateViaNavbar('About Us');
-      aboutUsPage.shouldBeOnRoute('#about-us');
-      cy.contains('Developers and content creators').should('be.visible');
-    });
-
-    it('should navigate to Support page from Home', () => {
-      homePage.navigateViaNavbar('Support');
-      supportPage.shouldBeOnRoute('#support');
-      cy.contains("We'd love to hear from you").should('be.visible');
-    });
-
-    it('should navigate back to Home from any page', () => {
-      homePage.navigateViaNavbar('Calculators');
-      homePage.navigateViaNavbar('Home');
-      homePage.shouldBeOnRoute('');
-      cy.showHeroContent();
-    });
-  });
-
-  describe('Navigation between pages', () => {
-    it('should navigate Calculators -> Converters -> About Us -> Support -> Home', () => {
-      homePage.navigateViaNavbar('Calculators');
-      calculatorsPage.shouldBeOnRoute('#calculators');
-
-      homePage.navigateViaNavbar('Converters');
-      convertersPage.shouldBeOnRoute('#converters');
-
-      homePage.navigateViaNavbar('About Us');
-      aboutUsPage.shouldBeOnRoute('#about-us');
-
-      homePage.navigateViaNavbar('Support');
-      supportPage.shouldBeOnRoute('#support');
-
-      homePage.navigateViaNavbar('Home');
-      homePage.shouldBeOnRoute('');
+            targetPage.assertRoute();
+            cy.contains(targetPage.visibleText).should('be.visible');
+          });
+        });
     });
   });
 
   describe('Mobile menu navigation', () => {
-    const clickMobileMenuButton = (buttonText: string) => {
-      cy.get('header nav')
-        .filter(':visible')
-        .contains('button', buttonText)
-        .click();
-    };
+    pages.forEach((sourcePage) => {
+      pages
+        .filter((targetPage) => targetPage.route !== sourcePage.route)
+        .forEach((targetPage) => {
+          it(`should navigate from ${sourcePage.name} to ${targetPage.name} via mobile menu`, () => {
+            cy.setMobileViewport();
+            cy.visit(sourcePage.visitPath);
 
-    it('should open and navigate via mobile menu', () => {
-      cy.viewport(375, 667);
-      cy.visit('/');
+            cy.openMobileMenu();
+            cy.clickVisibleNavButton(targetPage.buttonText);
 
-      cy.get('button[aria-label="Open menu"]').should('be.visible').click();
-      clickMobileMenuButton('Calculators');
-      cy.window().then((win) => {
-        expect(win.location.hash).to.equal('#calculators');
-      });
+            targetPage.assertRoute();
+            cy.contains(targetPage.visibleText).should('be.visible');
+          });
+        });
     });
 
     it('should close mobile menu after navigation', () => {
-      cy.viewport(375, 667);
+      cy.setMobileViewport();
       cy.visit('/');
 
-      cy.get('button[aria-label="Open menu"]').click();
-      clickMobileMenuButton('Converters');
+      cy.openMobileMenu();
+      cy.clickVisibleNavButton('Converters');
 
       cy.get('button[aria-label="Open menu"]').should(
         'have.attr',

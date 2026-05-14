@@ -1,91 +1,96 @@
 /// <reference types="cypress" />
 
+import { CalculatorsPage } from '../pages/CalculatorsPage';
+
 describe('Calculator E2E tests', () => {
-  const visitCalculators = () => {
-    cy.visit('/#calculators');
-  };
+  const calculatorsPage = new CalculatorsPage();
 
-  const clickCalculateButton = (index: number) => {
-    cy.get('button').filter(':contains("Calculate")').eq(index).click();
-  };
+  const calculatorCases = [
+    {
+      name: 'Stability of the atmosphere',
+      buttonIndex: 0,
+      inputs: [
+        { selector: '#ambientTemperature', value: '-10' },
+        { selector: '#parcelTemperature', value: '-5' },
+      ],
+      expectedResult: '= -5.00',
+    },
+    {
+      name: 'Updraft Strenght',
+      buttonIndex: 1,
+      inputs: [{ selector: 'input[id="cape"]', value: '2000', index: 0 }],
+      expectedResult: '= 63.25',
+    },
+    {
+      name: 'Vertical velocity',
+      buttonIndex: 2,
+      inputs: [{ selector: '#cin', value: '200' }],
+      expectedResult: '= 20.00',
+    },
+    {
+      name: 'Energy Helicity Index',
+      buttonIndex: 3,
+      inputs: [
+        { selector: 'input[id="cape"]', value: '2000', index: 1 },
+        { selector: '#srh', value: '160' },
+      ],
+      expectedResult: '= 2.00',
+    },
+    {
+      name: 'Derecho Composite Parameter',
+      buttonIndex: 4,
+      inputs: [
+        { selector: '#dcape', value: '980' },
+        { selector: '#mucape', value: '2000' },
+        { selector: '#shear06km', value: '20' },
+        { selector: '#meanWind06km', value: '16' },
+      ],
+      expectedResult: '= 1.00',
+    },
+    {
+      name: 'Lifting Condensation Level',
+      buttonIndex: 5,
+      inputs: [
+        { selector: 'input[id="temperature"]', value: '20', index: 0 },
+        { selector: '#dewPoint', value: '12' },
+      ],
+      expectedResult: '= 1000.00',
+    },
+    {
+      name: 'Dew Point Temperature',
+      buttonIndex: 6,
+      inputs: [
+        { selector: 'input[id="temperature"]', value: '20', index: 1 },
+        { selector: '#relativeHumidity', value: '50' },
+      ],
+      expectedResult: '= 10.00',
+    },
+    {
+      name: 'UVV',
+      buttonIndex: 7,
+      inputs: [{ selector: 'input[id="cape"]', value: '2500', index: 2 }],
+      expectedResult: '= 70.71',
+    },
+  ];
 
-  it('calculates Stability of the atmosphere', () => {
-    visitCalculators();
+  calculatorCases.forEach((testCase) => {
+    it(`calculates ${testCase.name}`, () => {
+      calculatorsPage.visitCalculators();
 
-    cy.get('#ambientTemperature').type('-10');
-    cy.get('#parcelTemperature').type('-5');
-    clickCalculateButton(0);
+      testCase.inputs.forEach((input) => {
+        const field = cy.get(input.selector);
 
-    cy.contains('= -5.00').should('be.visible');
-  });
+        if (input.index === undefined) {
+          field.clear().type(input.value);
+          return;
+        }
 
-  it('calculates Updraft Strenght', () => {
-    visitCalculators();
+        field.eq(input.index).clear().type(input.value);
+      });
 
-    cy.get('input[id="cape"]').eq(0).type('2000');
-    clickCalculateButton(1);
-
-    cy.contains('= 63.25').should('be.visible');
-  });
-
-  it('calculates Vertical velocity', () => {
-    visitCalculators();
-
-    cy.get('#cin').type('200');
-    clickCalculateButton(2);
-
-    cy.contains('= 20.00').should('be.visible');
-  });
-
-  it('calculates Energy Helicity Index', () => {
-    visitCalculators();
-
-    cy.get('input[id="cape"]').eq(1).type('2000');
-    cy.get('#srh').type('160');
-    clickCalculateButton(3);
-
-    cy.contains('= 2.00').should('be.visible');
-  });
-
-  it('calculates Derecho Composite Parameter', () => {
-    visitCalculators();
-
-    cy.get('#dcape').type('980');
-    cy.get('#mucape').type('2000');
-    cy.get('#shear06km').type('20');
-    cy.get('#meanWind06km').type('16');
-    clickCalculateButton(4);
-
-    cy.contains('= 1.00').should('be.visible');
-  });
-
-  it('calculates Lifting Condensation Level', () => {
-    visitCalculators();
-
-    cy.get('input[id="temperature"]').eq(0).type('20');
-    cy.get('#dewPoint').type('12');
-    clickCalculateButton(5);
-
-    cy.contains('= 1000.00').should('be.visible');
-  });
-
-  it('calculates Dew Point Temperature', () => {
-    visitCalculators();
-
-    cy.get('input[id="temperature"]').eq(1).type('20');
-    cy.get('#relativeHumidity').type('50');
-    clickCalculateButton(6);
-
-    cy.contains('= 10.00').should('be.visible');
-  });
-
-  it('calculates UVV', () => {
-    visitCalculators();
-
-    cy.get('input[id="cape"]').eq(2).type('2500');
-    clickCalculateButton(7);
-
-    cy.contains('= 70.71').should('be.visible');
+      calculatorsPage.clickCalculateByIndex(testCase.buttonIndex);
+      calculatorsPage.shouldShowResult(testCase.expectedResult);
+    });
   });
 });
 

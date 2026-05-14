@@ -1,12 +1,15 @@
 import { BasePage } from './BasePage';
 
 export class AboutUsPage extends BasePage {
+  /**
+   * Visit the About Us route.
+   */
   visitAboutUs() {
     return this.visit('/#about-us');
   }
 
   /**
-   * Verify About Us page content is visible
+   * Verify About Us page content is visible.
    */
   shouldShowAboutUsContent() {
     cy.contains('About Us').should('be.visible');
@@ -14,7 +17,7 @@ export class AboutUsPage extends BasePage {
   }
 
   /**
-   * Verify specific team member or section is visible
+   * Verify specific team member or section is visible.
    */
   shouldShowSection(sectionTitle: string) {
     cy.contains(sectionTitle).should('be.visible');
@@ -22,12 +25,10 @@ export class AboutUsPage extends BasePage {
   }
 
   /**
-   * Verify all expected sections are visible
+   * Verify all expected sections are visible.
    */
   shouldShowAllSections(sections: string[]) {
-    sections.forEach((section) => {
-      cy.contains(section).should('be.visible');
-    });
+    cy.shouldShowTexts(sections);
     return this;
   }
 }

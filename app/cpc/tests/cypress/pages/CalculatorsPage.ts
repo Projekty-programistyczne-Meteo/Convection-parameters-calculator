@@ -1,12 +1,15 @@
 import { BasePage } from './BasePage';
 
 export class CalculatorsPage extends BasePage {
+  /**
+   * Visit the calculators route.
+   */
   visitCalculators() {
     return this.visit('/#calculators');
   }
 
   /**
-   * Select a calculator from the menu
+   * Select a calculator from the menu.
    */
   selectCalculator(calculatorName: string) {
     cy.contains(calculatorName).should('be.visible');
@@ -14,15 +17,15 @@ export class CalculatorsPage extends BasePage {
   }
 
   /**
-   * Fill an input field with a value
+   * Fill an input field with a value.
    */
   fillInput(inputId: string, value: string) {
-    cy.get(`#${inputId}`).type(value);
+    cy.fillInputBySelector(`#${inputId}`, value);
     return this;
   }
 
   /**
-   * Clear an input field
+   * Clear an input field.
    */
   clearInput(inputId: string) {
     cy.get(`#${inputId}`).clear();
@@ -30,25 +33,33 @@ export class CalculatorsPage extends BasePage {
   }
 
   /**
-   * Fill multiple inputs at once
+   * Fill multiple inputs at once.
    */
   fillMultipleInputs(inputs: Record<string, string>) {
     Object.entries(inputs).forEach(([inputId, value]) => {
-      cy.get(`#${inputId}`).type(value);
+      cy.fillInputBySelector(`#${inputId}`, value);
     });
     return this;
   }
 
   /**
-   * Click the calculate button
+   * Click the first visible calculate button.
    */
   clickCalculate() {
-    cy.contains('button', 'Calculate').click();
+    cy.clickMainButton('Calculate');
     return this;
   }
 
   /**
-   * Verify calculation result is displayed
+   * Click a calculate button by index.
+   */
+  clickCalculateByIndex(index: number) {
+    cy.clickMainButton('Calculate', index);
+    return this;
+  }
+
+  /**
+   * Verify calculation result is displayed.
    */
   shouldShowResult(resultText: string) {
     cy.contains(resultText).should('be.visible');
@@ -56,7 +67,7 @@ export class CalculatorsPage extends BasePage {
   }
 
   /**
-   * Get the result value from the results section
+   * Get the result value from the results section.
    */
   getResultValue(): Cypress.Chainable<string> {
     return cy
@@ -66,7 +77,7 @@ export class CalculatorsPage extends BasePage {
   }
 
   /**
-   * Complete a full calculator test: fill inputs, calculate, verify result
+   * Complete a full calculator test: fill inputs, calculate, verify result.
    */
   calculateWithInputs(
     inputs: Record<string, string>,
@@ -85,7 +96,7 @@ export class CalculatorsPage extends BasePage {
   }
 
   /**
-   * Verify calculator form is visible with all inputs
+   * Verify calculator form is visible with all inputs.
    */
   shouldShowCalculatorForm(inputIds: string[]) {
     inputIds.forEach((inputId) => {
