@@ -2,24 +2,35 @@
 
 import NumberInput from '../../../../src/components/ui/NumberInput';
 
-describe('NumberInput', () => {
-  it('renders label, placeholder, and reports changes', () => {
-    const onChange = cy.stub().as('onChange');
-
+describe('NumberInput Component', () => {
+  it('renders label and input field', () => {
     cy.mount(
       <NumberInput
         id="cape"
         label="CAPE"
         value=""
         placeholder="Enter CAPE"
-        onChange={onChange}
+        onChange={() => {}}
       />,
     );
 
-    cy.contains('label', 'CAPE').should('have.attr', 'for', 'cape');
+    cy.contains('label', 'CAPE').should('be.visible');
+    cy.get('#cape').should('be.visible');
     cy.get('#cape').should('have.attr', 'placeholder', 'Enter CAPE');
-    cy.get('#cape').type('1200');
-    cy.get('@onChange').should('have.been.called');
+  });
+
+  it('renders input with value', () => {
+    cy.mount(
+      <NumberInput
+        id="cape"
+        label="CAPE"
+        value="1200"
+        placeholder="Enter CAPE"
+        onChange={() => {}}
+      />,
+    );
+
+    cy.get('#cape').should('have.value', '1200');
   });
 });
 

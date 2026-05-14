@@ -22,6 +22,15 @@ describe('App', () => {
 
     cy.contains('Temperature Units Converter').should('be.visible');
     cy.contains('Wind Units Converter').should('be.visible');
+
+    cy.contains('button', 'Calculators').click();
+    cy.contains('Stability of the atmosphere').should('be.visible');
+    cy.contains('Updraft Strenght').should('be.visible');
+    cy.contains('Vertical velocity').should('be.visible');
+    cy.contains('Energy Helicity Index').should('be.visible');
+    cy.contains('Derecho Composite Parameter').should('be.visible');
+    cy.contains('Lifting Condensation Level').should('be.visible');
+    cy.contains('Td').should('be.visible');
   });
 });
 

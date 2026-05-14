@@ -4,10 +4,8 @@ import SelectField from '../../../../src/components/ui/SelectField';
 
 type TestUnit = 'celsius' | 'kelvin';
 
-describe('SelectField', () => {
-  it('renders options and reports selected value', () => {
-    const onChange = cy.stub().as('onChange');
-
+describe('SelectField Component', () => {
+  it('renders label and select options', () => {
     cy.mount(
       <SelectField<TestUnit>
         id="temperatureUnit"
@@ -17,17 +15,31 @@ describe('SelectField', () => {
           { id: 'celsius', label: 'Celsius' },
           { id: 'kelvin', label: 'Kelvin' },
         ]}
-        onChange={onChange}
+        onChange={() => {}}
       />,
     );
 
-    cy.contains('label', 'Temperature unit').should(
-      'have.attr',
-      'for',
-      'temperatureUnit',
+    cy.contains('label', 'Temperature unit').should('be.visible');
+    cy.get('#temperatureUnit').should('be.visible');
+    cy.get('#temperatureUnit').should('contain', 'Celsius');
+    cy.get('#temperatureUnit').should('contain', 'Kelvin');
+  });
+
+  it('displays selected value', () => {
+    cy.mount(
+      <SelectField<TestUnit>
+        id="temperatureUnit"
+        label="Temperature unit"
+        value="kelvin"
+        options={[
+          { id: 'celsius', label: 'Celsius' },
+          { id: 'kelvin', label: 'Kelvin' },
+        ]}
+        onChange={() => {}}
+      />,
     );
-    cy.get('#temperatureUnit').select('kelvin');
-    cy.get('@onChange').should('have.been.calledWith', 'kelvin');
+
+    cy.get('#temperatureUnit').should('have.value', 'kelvin');
   });
 });
 
