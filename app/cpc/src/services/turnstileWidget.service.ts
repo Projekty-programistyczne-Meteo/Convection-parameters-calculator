@@ -23,6 +23,9 @@ const TURNSTILE_SCRIPT_ID = 'cf-turnstile-script';
 const TURNSTILE_SCRIPT_SRC =
   'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
 
+/**
+ * Loads the Cloudflare Turnstile script once and runs the callback when the API is ready.
+ */
 export function loadTurnstileScript(onLoad?: () => void): void {
   const existingScript = document.getElementById(
     TURNSTILE_SCRIPT_ID,
@@ -47,6 +50,9 @@ export function loadTurnstileScript(onLoad?: () => void): void {
 
 import type { TurnstileWidgetParams } from '../types/services.types';
 
+/**
+ * Renders a Turnstile widget and wires token, expiry, and error callbacks into the form.
+ */
 export function renderTurnstileWidget(
   params: TurnstileWidgetParams,
 ): string | null {
@@ -65,6 +71,9 @@ export function renderTurnstileWidget(
   });
 }
 
+/**
+ * Resets an existing Turnstile widget after submit attempts or token invalidation.
+ */
 export function resetTurnstileWidget(widgetId?: string | null): void {
   if (!widgetId || !window.turnstile) {
     return;
@@ -73,6 +82,9 @@ export function resetTurnstileWidget(widgetId?: string | null): void {
   window.turnstile.reset(widgetId);
 }
 
+/**
+ * Removes an existing Turnstile widget during component cleanup.
+ */
 export function removeTurnstileWidget(widgetId?: string | null): void {
   if (!widgetId || !window.turnstile) {
     return;

@@ -1,5 +1,3 @@
-// src/components/contactForm.tsx
-
 import { useEffect, useRef, useState } from 'react';
 import {
   initialContactFormData,
@@ -20,6 +18,10 @@ const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
 const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY as string;
 
+/**
+ * Contact form with validation, Turnstile verification, and EmailJS submission.
+ * It manages form state, user feedback messages, and security widget lifecycle.
+ */
 function ContactForm() {
   const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
   const widgetIdRef = useRef<string | null>(null);

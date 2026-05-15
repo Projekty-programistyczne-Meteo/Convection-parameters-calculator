@@ -5,14 +5,23 @@ import type {
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
+/**
+ * Collapses repeated whitespace and trims text input before validation or sending.
+ */
 export function normalizeText(value: string): string {
   return value.replace(/\s+/g, ' ').trim();
 }
 
+/**
+ * Normalizes message line endings and removes leading or trailing blank space.
+ */
 export function sanitizeMessage(value: string): string {
   return value.replace(/\r\n/g, '\n').trim();
 }
 
+/**
+ * Sanitizes all contact form fields into the shape used by validation and EmailJS.
+ */
 export function sanitizeContactFormData(
   data: ContactFormData,
 ): ContactFormData {
@@ -25,6 +34,9 @@ export function sanitizeContactFormData(
   };
 }
 
+/**
+ * Validates sanitized contact form data and returns field errors with the cleaned payload.
+ */
 export function validateContactForm(rawData: ContactFormData): {
   isValid: boolean;
   errors: ContactFormErrors;

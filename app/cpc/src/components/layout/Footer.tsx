@@ -1,5 +1,9 @@
 const baseUrl = import.meta.env.BASE_URL;
 
+/**
+ * Site footer with attribution, navigation links, contact details, and social links.
+ * It reuses the app base URL for bundled favicon assets.
+ */
 function Footer() {
   return (
     <footer className="bg-[#2f2f2f] text-[#f5f2eb] text-sm">

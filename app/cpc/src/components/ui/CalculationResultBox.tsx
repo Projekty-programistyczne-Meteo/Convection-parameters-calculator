@@ -1,5 +1,9 @@
 import type { CalculationResultBoxProps } from '../../types/ui.types';
 
+/**
+ * Shared result display for calculator formulas, optional numeric output, and descriptions.
+ * Calculator components use it to keep result messaging and styling consistent.
+ */
 function CalculationResultBox({
   formula,
   result,
