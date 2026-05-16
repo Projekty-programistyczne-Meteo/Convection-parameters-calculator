@@ -1,43 +1,18 @@
-import { useEffect, useState } from 'react';
 import Navbar from './components/layout/Navbar';
-import MainPage from './components/pages/MainPage';
+import Footer from './components/layout/Footer';
+import MainPage from './components/pages/HomePage';
 import CalculatorsPage from './components/pages/CalculatorsPage';
 import ConvertersPage from './components/pages/ConvertersPage';
 import AboutUsPage from './components/pages/AboutUsPage';
 import SupportPage from './components/pages/SupportPage';
-import Footer from './components/layout/Footer';
+import { useHashNavigation } from './hooks/useHashNavigation';
 
 /**
  * Root application component that controls which page is visible from the current hash route.
- * It keeps navigation state in one place and passes the active route down to the navbar.
+ * It keeps navigation state in one place and passes the active route down to navigation components.
  */
 function App() {
-  const allowedHrefs = [
-    '#',
-    '#calculators',
-    '#converters',
-    '#about-us',
-    '#support',
-  ] as const;
-
-  type Href = (typeof allowedHrefs)[number];
-
-  const getInitialHref = (): Href => {
-    const currentHash = window.location.hash as Href;
-    return allowedHrefs.includes(currentHash) ? currentHash : '#';
-  };
-
-  const [activeHref, setActiveHref] = useState<Href>(getInitialHref);
-
-  useEffect(() => {
-    const handleHashChange = () => {
-      const currentHash = window.location.hash as Href;
-      setActiveHref(allowedHrefs.includes(currentHash) ? currentHash : '#');
-    };
-
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+  const { activeHref, navigate } = useHashNavigation();
 
   const renderPage = () => {
     switch (activeHref) {
@@ -50,7 +25,9 @@ function App() {
       case '#about-us':
         return <AboutUsPage />;
       case '#support':
-        return <SupportPage />;
+        return <SupportPage onNavigate={navigate} />;
+      case '#privacy-policy':
+        return <MainPage />;
       default:
         return <MainPage />;
     }
@@ -58,9 +35,12 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white text-stone-900">
-      <Navbar activeHref={activeHref} onNavigate={setActiveHref} />
+      <Navbar activeHref={activeHref} onNavigate={navigate} />
       {renderPage()}
-      <Footer />
+      <Footer
+        activeHref={activeHref}
+        onNavigate={(href) => navigate(href, { scrollToTop: true })}
+      />
     </div>
   );
 }

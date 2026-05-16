@@ -12,17 +12,25 @@ import {
   renderTurnstileWidget,
   resetTurnstileWidget,
 } from '../../services/turnstileWidget.service';
+import type { Href } from '../../hooks/useHashNavigation';
+import { requestPrivacyPolicyAnimation } from '../../utils/privacyPolicyNavigation';
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
 const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY as string;
+const TURNSTILE_CONFIGURATION_ERROR =
+  'Security widget is not configured. Please contact the administrator.';
+
+type ContactFormProps = {
+  onNavigate: (href: Href) => void;
+};
 
 /**
  * Contact form with validation, Turnstile verification, and EmailJS submission.
  * It manages form state, user feedback messages, and security widget lifecycle.
  */
-function ContactForm() {
+function ContactForm({ onNavigate }: ContactFormProps) {
   const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
   const widgetIdRef = useRef<string | null>(null);
 
@@ -33,13 +41,12 @@ function ContactForm() {
   const [turnstileToken, setTurnstileToken] = useState('');
   const [isSending, setIsSending] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
-  const [formError, setFormError] = useState('');
+  const [formError, setFormError] = useState(() =>
+    TURNSTILE_SITE_KEY ? '' : TURNSTILE_CONFIGURATION_ERROR,
+  );
 
   useEffect(() => {
     if (!TURNSTILE_SITE_KEY) {
-      setFormError(
-        'Security widget is not configured. Please contact the administrator.',
-      );
       return;
     }
 
@@ -151,6 +158,14 @@ function ContactForm() {
     } finally {
       setIsSending(false);
     }
+  };
+
+  const handlePrivacyPolicyClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+  ) => {
+    e.preventDefault();
+    requestPrivacyPolicyAnimation();
+    onNavigate('#privacy-policy');
   };
 
   return (
@@ -313,7 +328,8 @@ function ContactForm() {
               <span className="text-red-900">★ </span>I agree to the processing
               of my data in accordance with the{' '}
               <a
-                href="#"
+                href="#privacy-policy"
+                onClick={handlePrivacyPolicyClick}
                 className="font-medium text-stone-900 underline underline-offset-2"
               >
                 privacy policy

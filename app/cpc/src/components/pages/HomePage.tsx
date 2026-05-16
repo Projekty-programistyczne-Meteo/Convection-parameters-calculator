@@ -1,10 +1,48 @@
+import { useEffect, useRef } from 'react';
 import Hero from '../layout/Hero';
+import {
+  clearPrivacyPolicyAnimationRequest,
+  shouldAnimatePrivacyPolicy,
+} from '../../utils/privacyPolicyNavigation';
 
 /**
  * Composes the home page with the shared hero and the current landing content section.
  * This route-level component is the default view when no supported hash route is selected.
  */
 function MainPage() {
+  const privacyPolicyHeadingRef = useRef<HTMLHeadingElement | null>(null);
+
+  useEffect(() => {
+    if (window.location.hash !== '#privacy-policy') {
+      return;
+    }
+
+    const privacyPolicyHeading = privacyPolicyHeadingRef.current;
+
+    privacyPolicyHeading?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+    });
+
+    if (!privacyPolicyHeading || !shouldAnimatePrivacyPolicy()) {
+      return;
+    }
+
+    privacyPolicyHeading.classList.remove('animate-privacy-policy');
+    void privacyPolicyHeading.offsetWidth;
+    privacyPolicyHeading.classList.add('animate-privacy-policy');
+
+    const timeoutId = window.setTimeout(() => {
+      privacyPolicyHeading.classList.remove('animate-privacy-policy');
+      clearPrivacyPolicyAnimationRequest();
+    }, 2000);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      privacyPolicyHeading.classList.remove('animate-privacy-policy');
+    };
+  }, []);
+
   return (
     <>
       <Hero />
@@ -37,6 +75,34 @@ function MainPage() {
               on github pages. As an alpha version, we are continuously
               improving features, adding more calculators, and refining the user
               experience based on feedback.
+            </p>
+          </div>
+
+          <div id="privacy-policy">
+            <h3
+              ref={privacyPolicyHeadingRef}
+              className="mb-3 text-xl font-semibold leading-tight"
+            >
+              Privacy policy
+            </h3>
+            <p className="text-base leading-8">
+              We value your privacy and are committed to protecting your data.{' '}
+              <u>
+                We are not interested in collecting any personal information
+                from our users.
+              </u>{' '}
+              All calculations are performed locally in your browser, and we do
+              not store or transmit any of your data to our servers. In contact
+              form submissions, we use EmailJS to send messages directly to our
+              email without storing them on our servers. The only data needed
+              for the contact form is your email address and message content,
+              which are sent securely to our email address. We do not share your
+              information with third parties, and we do not use cookies or
+              tracking technologies on our website. Providing your personal
+              information in contact form is entirely optional, and you can use
+              all the features of our website without sharing any personal data.
+              If you have any questions or concerns about our privacy practices,
+              please feel free to contact us.
             </p>
           </div>
         </section>
@@ -79,6 +145,15 @@ function MainPage() {
                 <li>
                   <strong>Updraft Strength</strong> - Calculates the vertical
                   velocity of rising air parcels
+                </li>
+                <li>
+                  <strong>Vertical velocity</strong> - Estimates the lifting
+                  velocity needed for an air parcel to overcome convective
+                  inhibition
+                </li>
+                <li>
+                  <strong>UVV (Upward Vertical Velocity)</strong> - Calculates
+                  theoretical maximum upward velocity from CAPE
                 </li>
               </ul>
             </div>

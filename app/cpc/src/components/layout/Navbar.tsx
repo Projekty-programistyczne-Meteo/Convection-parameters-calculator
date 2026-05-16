@@ -1,19 +1,12 @@
 import { useState } from 'react';
+import { navLinks } from '../../hooks/useHashNavigation';
+import type { Href } from '../../hooks/useHashNavigation';
 
 const baseUrl = import.meta.env.BASE_URL;
 
-const links = [
-  { label: 'Home', href: '#' },
-  // { label: 'All tools', href: '#all-tools' },
-  { label: 'Calculators', href: '#calculators' },
-  { label: 'Converters', href: '#converters' },
-  { label: 'About Us', href: '#about-us' },
-  { label: 'Support', href: '#support' },
-] as const;
-
 type NavbarProps = {
-  activeHref: (typeof links)[number]['href'];
-  onNavigate: (href: (typeof links)[number]['href']) => void;
+  activeHref: Href;
+  onNavigate: (href: Href) => void;
 };
 
 /**
@@ -23,13 +16,7 @@ type NavbarProps = {
 function Navbar({ activeHref, onNavigate }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleNavigation = (href: (typeof links)[number]['href']) => {
-    if (href === '#') {
-      window.history.pushState(null, '', window.location.pathname);
-    } else {
-      window.history.pushState(null, '', href);
-    }
-
+  const handleNavigation = (href: Href) => {
     onNavigate(href);
     setIsOpen(false);
   };
@@ -51,7 +38,7 @@ function Navbar({ activeHref, onNavigate }: NavbarProps) {
 
         <nav className="hidden md:block">
           <ul className="flex items-center justify-center gap-6 lg:gap-10">
-            {links.map((link) => (
+            {navLinks.map((link) => (
               <li key={link.label}>
                 <button
                   type="button"
@@ -73,7 +60,7 @@ function Navbar({ activeHref, onNavigate }: NavbarProps) {
           <button
             className="group inline-flex h-10 w-10 items-center justify-center rounded-full text-stone-900 transition-colors duration-200 "
             aria-label="Open tools"
-            onClick={() => handleNavigation(links[4].href)}
+            onClick={() => handleNavigation(navLinks[4].href)}
           >
             <span className="flex items-center justify-center">
               <img
@@ -99,7 +86,7 @@ function Navbar({ activeHref, onNavigate }: NavbarProps) {
       {isOpen && (
         <nav className="border-t border-slate-300 bg-sky-50 md:hidden">
           <ul className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6">
-            {links.map((link) => (
+            {navLinks.map((link) => (
               <li key={link.label}>
                 <button
                   type="button"
