@@ -13,7 +13,7 @@ function Button({
   return (
     <button
       type={type}
-      className={`h-12 min-w-35 rounded-full border-2 border-[#0E5E97] bg-[#1569A8] px-6 text-sm font-bold uppercase tracking-wide text-white shadow-sm transition hover:scale-[1.03] hover:bg-[#0E5E97] hover:cursor-pointer disabled:cursor-not-allowed disabled:opacity-60 ${className}`}
+      className={`h-12 min-w-35 rounded-full border-2 border-cpc-background-button-hover bg-cpc-background-button px-6 text-sm font-bold uppercase tracking-wide text-cpc-text-inverse shadow-sm transition hover:scale-[1.03] hover:bg-cpc-background-button-hover hover:cursor-pointer disabled:cursor-not-allowed disabled:opacity-60 ${className}`}
       {...props}
     >
       {children}

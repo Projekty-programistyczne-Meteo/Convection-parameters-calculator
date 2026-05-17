@@ -15,7 +15,7 @@ function ConvertersPage() {
       <main>
         <TemperatureUnitsConverter />
         <WindUnitsConverter />
-        <article className="bg-[#EEE8E8] px-6 py-10 md:px-12 lg:px-20 text-stone-900">
+        <article className="bg-cpc-background-main px-6 py-10 md:px-12 lg:px-20 text-cpc-text-primary">
           <section className="space-y-6">
             <h2 className="text-2xl font-bold leading-tight">
               Explanation step by step of how to convert temperature units
@@ -232,14 +232,14 @@ function ConvertersPage() {
               href="https://en.wikipedia.org/wiki/Conversion_of_scales_of_temperature"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block break-all text-sky-800 underline underline-offset-4 transition hover:text-sky-950"
+              className="inline-block break-all text-cpc-text-info-link underline underline-offset-4 transition hover:text-cpc-text-info-link-hover"
             >
               https://en.wikipedia.org/wiki/Conversion_of_scales_of_temperature
             </a>
           </section>
         </article>
 
-        <article className="bg-[#EEE8E8] px-6 py-10 md:px-12 lg:px-20 text-stone-900">
+        <article className="bg-cpc-background-main px-6 py-10 md:px-12 lg:px-20 text-cpc-text-primary">
           <section className="space-y-6">
             <h2 className="text-2xl font-bold leading-tight">
               Explanation step by step of how to convert wind units between each
@@ -376,7 +376,7 @@ function ConvertersPage() {
               href="https://www.weather.gov/epz/wxcalc_windconvert"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block break-all text-sky-800 underline underline-offset-4 transition hover:text-sky-950"
+              className="inline-block break-all text-cpc-text-info-link underline underline-offset-4 transition hover:text-cpc-text-info-link-hover"
             >
               https://www.weather.gov/epz/wxcalc_windconvert
             </a>

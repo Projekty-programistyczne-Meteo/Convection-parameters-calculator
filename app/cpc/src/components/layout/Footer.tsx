@@ -1,39 +1,56 @@
+import { navLinks } from '../../hooks/useHashNavigation';
+import type { Href } from '../../hooks/useHashNavigation';
+
 const baseUrl = import.meta.env.BASE_URL;
+
+type FooterProps = {
+  activeHref: Href;
+  onNavigate: (href: Href) => void;
+};
 
 /**
  * Site footer with attribution, navigation links, contact details, and social links.
  * It reuses the app base URL for bundled favicon assets.
  */
-function Footer() {
+function Footer({ activeHref, onNavigate }: FooterProps) {
+  const handleNavigation = (href: Href) => {
+    onNavigate(href);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-[#2f2f2f] text-[#f5f2eb] text-sm">
+    <footer className="bg-cpc-background-footer-main text-cpc-text-footer text-sm">
       <div className="mx-auto max-w-8xl px-6 py-12 md:px-10 lg:px-16">
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {/* Left column */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-sm md:text-xl font-semibold text-white">
+              <h3 className="text-sm md:text-xl font-semibold text-cpc-text-inverse">
                 Website Designers:
               </h3>
-              <p className="mt-3 text-sm leading-7 text-stone-200">
+              <p className="mt-3 text-sm leading-7 text-cpc-text-footer">
                 Jakub Początek, Filip Szymanek
               </p>
             </div>
 
             <div>
-              <h3 className="text-sm md:text-xl font-semibold text-white">
+              <h3 className="text-sm md:text-xl font-semibold text-cpc-text-inverse">
                 Website Developer:
               </h3>
-              <p className="mt-3 text-xs md:text-sm leading-7 text-stone-200">
+              <p className="mt-3 text-xs md:text-sm leading-7 text-cpc-text-footer">
                 Jakub Początek
               </p>
             </div>
 
             <div>
-              <h3 className="text-sm md:text-xl font-semibold text-white">
+              <h3 className="text-sm md:text-xl font-semibold text-cpc-text-inverse">
                 Content creators:
               </h3>
-              <p className="mt-3 text-xs md:text-sm leading-7 text-stone-200">
+              <p className="mt-3 text-xs md:text-sm leading-7 text-cpc-text-footer">
                 Jakub Początek, Filip Szymanek
               </p>
             </div>
@@ -42,62 +59,48 @@ function Footer() {
           {/* Middle column */}
           <div className="space-y-8">
             <div>
-              <a
-                href="#top"
-                className="inline-flex items-center gap-2 text-sm md:text-xl font-semibold text-white transition hover:text-stone-300"
+              <button
+                type="button"
+                onClick={handleScrollTop}
+                className="inline-flex items-center gap-2 text-sm md:text-xl font-semibold text-cpc-text-inverse transition hover:text-cpc-text-footer-muted"
               >
                 <span aria-hidden="true">⇪</span>
                 <span>Back to top</span>
                 <span aria-hidden="true">⇪</span>
-              </a>
+              </button>
             </div>
 
             <div>
-              <h3 className="text-sm md:text-xl font-semibold text-white">
+              <h3 className="text-sm md:text-xl font-semibold text-cpc-text-inverse">
                 Menu
               </h3>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-xs md:text-sm text-stone-200 marker:text-stone-300">
-                <li>
-                  <a href="/" className="transition hover:text-white">
-                    home
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/#calculators"
-                    className="transition hover:text-white"
-                  >
-                    calculators
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/#converters"
-                    className="transition hover:text-white"
-                  >
-                    converters
-                  </a>
-                </li>
-                <li>
-                  <a href="/#about-us" className="transition hover:text-white">
-                    about us
-                  </a>
-                </li>
-                <li>
-                  <a href="/#support" className="transition hover:text-white">
-                    support
-                  </a>
-                </li>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-xs md:text-sm text-cpc-text-footer marker:text-cpc-text-footer-muted">
+                {navLinks.map((link) => (
+                  <li key={link.label}>
+                    <button
+                      type="button"
+                      onClick={() => handleNavigation(link.href)}
+                      className={`transition hover:text-cpc-text-inverse hover:cursor-pointer ${
+                        activeHref === link.href
+                          ? 'text-cpc-text-inverse font-semibold'
+                          : 'text-cpc-text-footer'
+                      }`}
+                    >
+                      {link.label}
+                    </button>
+                  </li>
+                ))}
               </ul>
             </div>
 
             <div>
-              <h3 className="text-sm md:text-xl font-semibold text-white">
+              <h3 className="text-sm md:text-xl font-semibold text-cpc-text-inverse">
                 Terms and conditions and Privacy Policy
               </h3>
               <a
-                href="/licence-and-agreement"
-                className="mt-3 inline-block text-xs md:text-sm text-stone-200 underline underline-offset-4 transition hover:text-white"
+                href="https://github.com/Projekty-programistyczne-Meteo/Convection-parameters-calculator/blob/main/LICENSE"
+                target="_blank"
+                className="mt-3 inline-block text-xs md:text-sm text-cpc-text-footer underline underline-offset-4 transition hover:text-cpc-text-inverse hover:cursor-pointer"
               >
                 Licence and agreement
               </a>
@@ -107,26 +110,26 @@ function Footer() {
           {/* Right column */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-sm md:text-xl font-semibold text-white">
+              <h3 className="text-sm md:text-xl font-semibold text-cpc-text-inverse">
                 Contact:
               </h3>
               <a
                 href="mailto:cpc.jpfs.support@gmail.com"
-                className="mt-3 inline-block text-xs md:text-sm text-stone-200 underline underline-offset-4 transition hover:text-white"
+                className="mt-3 inline-block text-xs md:text-sm text-cpc-text-footer underline underline-offset-4 transition hover:text-cpc-text-inverse hover:cursor-pointer"
               >
                 cpc.jpfs.support@gmail.com
               </a>
             </div>
 
             <div>
-              <h3 className="text-sm md:text-xl font-semibold text-white">
+              <h3 className="text-sm md:text-xl font-semibold text-cpc-text-inverse">
                 Support us here:
               </h3>
               <a
                 href="https://lowcyburz.pl/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-block text-xs md:text-sm text-stone-200 underline underline-offset-4 transition hover:text-white"
+                className="mt-3 inline-block text-xs md:text-sm text-cpc-text-footer underline underline-offset-4 transition hover:text-cpc-text-inverse hover:cursor-pointer"
               >
                 lowcyburz.pl
               </a>
@@ -138,7 +141,7 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="transition hover:scale-105"
+                className="transition hover:scale-105 hover:cursor-pointer"
               >
                 <img
                   src={`${baseUrl}/favicons/facebook.png`}
@@ -152,7 +155,7 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="transition hover:scale-105"
+                className="transition hover:scale-105 hover:cursor-pointer"
               >
                 <img
                   src={`${baseUrl}/favicons/github.png`}
@@ -166,7 +169,7 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="transition hover:scale-105"
+                className="transition hover:scale-105 hover:cursor-pointer"
               >
                 <img
                   src={`${baseUrl}/favicons/instagram.png`}
@@ -179,8 +182,8 @@ function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 bg-[#282828] px-6 py-5 text-center md:px-10">
-        <p className="text-sm text-stone-200">
+      <div className="border-t border-white/10 bg-cpc-background-footer-bottom px-6 py-5 text-center md:px-10">
+        <p className="text-sm text-cpc-text-footer">
           © 2026 CPC. | ver: alpha-0.1.0 | All rights reserved
         </p>
       </div>

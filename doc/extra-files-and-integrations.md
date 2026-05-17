@@ -7,10 +7,10 @@ The `app/cpc` folder contains the React app and its project metadata.
 - `index.html` is the HTML document used by Vite.
 - `package.json` declares scripts, runtime dependencies, and development dependencies.
 - `package-lock.json` locks dependency versions.
-- `vite.config.ts` contains Vite integration details.
+- `vite.config.ts` contains Vite integration details and includes a small development plugin for CSP header injection.
 - `eslint.config.js` contains lint rules and plugin setup.
 - `tsconfig.json`, `tsconfig.app.json`, and `tsconfig.node.json` contain TypeScript project settings.
-- `README.md` contains intro documentation in main branch site.
+- `README-React.md` contains app-specific guidance and notes.
 
 This documentation intentionally does not duplicate configuration details or add a run/setup guide.
 
@@ -45,7 +45,7 @@ Services live in `src/services`.
 - exposes reset and remove helpers,
 - extends the `Window` type for `window.turnstile`.
 
-`ContactForm.tsx` reads its service values from Vite environment variables and handles missing configuration through user-facing form errors.
+`useContactForm.ts` reads service values from Vite environment variables and handles missing configuration through user-facing form errors.
 
 ## Styling
 
@@ -58,10 +58,12 @@ The UI uses repeated neutral backgrounds, stone text colors, blue action buttons
 
 ## Tests
 
-There are untracked Cypress files under `app/cpc/tests`, including:
+The Cypress test setup lives in `app/cpc/tests/cypress`.
 
-- `tests/cypress.json`
-- `tests/cypress/integration/`
-- `tests/cypress/plugins/`
+- `app/cpc/tests/cypress.config.ts` defines both E2E and component test configuration.
+- `app/cpc/tests/cypress/support/e2e.ts` is the E2E support file.
+- `app/cpc/tests/cypress/support/component.ts` is the component test support file.
+- `app/cpc/tests/cypress/support/component-index.html` is the component test HTML template.
+- `app/cpc/tests/cypress/pages` contains page object helpers used by E2E tests.
 
-These files indicate a Cypress test structure exists or is being introduced. They are separate from the current source documentation and were left untouched.
+The current test setup is the authoritative source of Cypress configuration.

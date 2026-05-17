@@ -13,13 +13,13 @@
 
 Page components live in `src/components/pages`.
 
-- `MainPage.tsx` renders `Hero` and a placeholder main content section.
-- `CalculatorsPage.tsx` renders `Hero` and all meteorological calculator sections.
-- `ConvertersPage.tsx` renders `Hero`, temperature and wind converters, and explanatory conversion content.
+- `HomePage.tsx` renders `Hero`, landing content, and handles privacy notification animation reset.
+- `CalculatorsPage.tsx` renders all meteorological calculator sections.
+- `ConvertersPage.tsx` renders the temperature and wind converters plus the supporting diagram.
 - `AboutUsPage.tsx` contains the about page content.
 - `SupportPage.tsx` renders `Hero` and the contact form section.
 
-These components should stay focused on page composition. Detailed form logic belongs in feature components, hooks, or utilities.
+These components are focused on page composition. Detailed form and navigation logic belongs in feature components, hooks, or utilities.
 
 ## Layout Components
 
@@ -28,7 +28,7 @@ Layout components live in `src/components/layout`.
 - `Navbar.tsx` displays app navigation and receives the active route from `App.tsx`.
 - `Hero.tsx` provides the shared hero section used on pages.
 - `Footer.tsx` provides the shared footer.
-- `ContactForm.tsx` handles the support/contact form UI, validation state, Turnstile widget state, and submit flow.
+- `ContactForm.tsx` renders the support/contact form UI and delegates validation, Turnstile lifecycle, and submit behavior to `useContactForm`.
 
 ## Calculator Components
 
@@ -45,7 +45,7 @@ Each calculator component follows the same pattern:
 
 Current calculator components:
 
-- `StabilityOfTheAtmosphere.tsx` - Lifted Index from environmental and parcel temperature.
+- `StabilityOfTheAtmosphere.tsx` - Lifted Index from ambient and parcel temperature.
 - `UpdraftStrenght.tsx` - theoretical maximum updraft speed from CAPE.
 - `VerticalVelocity.tsx` - lifting velocity from CIN.
 - `EnergyHelicityIndex.tsx` - Energy Helicity Index from CAPE and storm-relative helicity.

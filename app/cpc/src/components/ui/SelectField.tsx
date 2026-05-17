@@ -15,7 +15,7 @@ function SelectField<T extends string>({
     <div className="space-y-2">
       <label
         htmlFor={id}
-        className="block text-base font-semibold text-stone-900"
+        className="block text-base font-semibold text-cpc-text-primary"
       >
         {label}
       </label>
@@ -25,7 +25,7 @@ function SelectField<T extends string>({
           id={id}
           value={value}
           onChange={(e) => onChange(e.target.value as T)}
-          className="h-12 w-full appearance-none rounded-sm border border-zinc-400 bg-[#ECECEC] px-4 pr-14 text-sm text-stone-900 outline-none transition focus:border-sky-700 focus:bg-white"
+          className="h-12 w-full appearance-none rounded-sm border border-zinc-400 bg-cpc-background-input-output-global px-4 pr-14 text-sm text-cpc-text-primary outline-none transition focus:border-sky-700 focus:bg-cpc-background-select-focus"
         >
           {options.map((option) => (
             <option key={option.id} value={option.id}>
@@ -34,7 +34,7 @@ function SelectField<T extends string>({
           ))}
         </select>
 
-        <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-stone-900">
+        <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-cpc-text-primary">
           <svg
             className="h-4 w-4"
             viewBox="0 0 20 20"

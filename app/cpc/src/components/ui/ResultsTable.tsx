@@ -16,8 +16,8 @@ type ResultsTableProps = {
  */
 function ResultsTable({ leftHeader, rightHeader, rows }: ResultsTableProps) {
   return (
-    <div className="mt-10 overflow-hidden rounded-sm border border-zinc-400 bg-[#ECECEC]">
-      <div className="grid grid-cols-[2fr_1fr] bg-[#E0DBDB] px-4 py-3 text-sm font-semibold text-stone-900 md:px-6">
+    <div className="mt-10 overflow-hidden rounded-sm border border-zinc-400 bg-cpc-background-input-output-global">
+      <div className="grid grid-cols-[2fr_1fr] bg-cpc-background-results-table px-4 py-3 text-sm font-semibold text-cpc-text-primary md:px-6">
         <span>{leftHeader}</span>
         <span className="text-right">{rightHeader}</span>
       </div>
@@ -26,7 +26,7 @@ function ResultsTable({ leftHeader, rightHeader, rows }: ResultsTableProps) {
         {rows.map((row) => (
           <div
             key={row.id}
-            className="grid grid-cols-[2fr_1fr] px-4 py-3 text-sm text-stone-900 md:px-6"
+            className="grid grid-cols-[2fr_1fr] px-4 py-3 text-sm text-cpc-text-primary md:px-6"
           >
             <span>{row.label}</span>
             <span className="text-right">{row.value}</span>

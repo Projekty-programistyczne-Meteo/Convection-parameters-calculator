@@ -1,21 +1,21 @@
 /// <reference types="cypress" />
 /// <reference path="../support/component.ts" />
 
-import MainPage from '../../../../src/components/pages/MainPage';
+import HomePage from '../../../../src/components/pages/HomePage';
 
-describe('MainPage', () => {
-  it('renders Main page', () => {
-    cy.mount(<MainPage />);
+describe('HomePage', () => {
+  it('renders Home page', () => {
+    cy.mount(<HomePage />);
   });
 
   it('displays documentation header', () => {
-    cy.mount(<MainPage />);
+    cy.mount(<HomePage />);
 
     cy.contains('Docs and quick start').should('be.visible');
   });
 
   it('displays welcome section', () => {
-    cy.mount(<MainPage />);
+    cy.mount(<HomePage />);
 
     cy.contains('Welcome to Convection Parameters Calculator').should(
       'be.visible',
@@ -26,7 +26,7 @@ describe('MainPage', () => {
   });
 
   it('displays version information', () => {
-    cy.mount(<MainPage />);
+    cy.mount(<HomePage />);
 
     cy.contains('Website Version').should('be.visible');
     cy.contains('alpha-0.1.0').should('be.visible');
@@ -36,7 +36,7 @@ describe('MainPage', () => {
   });
 
   it('displays website sections', () => {
-    cy.mount(<MainPage />);
+    cy.mount(<HomePage />);
 
     cy.contains('Website Sections').should('be.visible');
 
@@ -68,7 +68,7 @@ describe('MainPage', () => {
   });
 
   it('displays how to use section', () => {
-    cy.mount(<MainPage />);
+    cy.mount(<HomePage />);
 
     cy.contains('How to Use This Website').should('be.visible');
     cy.contains('Select a Tool:').should('be.visible');
@@ -78,7 +78,7 @@ describe('MainPage', () => {
   });
 
   it('displays technical information', () => {
-    cy.mount(<MainPage />);
+    cy.mount(<HomePage />);
 
     cy.contains('Technical Information').should('be.visible');
     cy.contains(

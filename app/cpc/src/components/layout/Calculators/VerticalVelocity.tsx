@@ -26,13 +26,13 @@ function VerticalVelocity() {
   });
 
   return (
-    <section className="bg-[#F6F1F1] px-6 py-10 md:px-12 lg:px-20">
+    <section className="bg-cpc-background-calculators px-6 py-10 md:px-12 lg:px-20">
       <div className="mx-auto max-w-6xl space-y-8">
         <header>
-          <h2 className="text-xl font-bold tracking-tight text-stone-900 md:text-2xl">
+          <h2 className="text-xl font-bold tracking-tight text-cpc-text-primary md:text-2xl">
             Vertical velocity
           </h2>
-          <p className="mt-2 text-xs text-stone-600 md:text-sm">
+          <p className="mt-2 text-xs text-cpc-text-secondary md:text-sm">
             Vertical lifting velocity calculated from CIN value. It estimates
             the strength of upward motion that a parcel needs to overcome
             inhibition and begin convective ascent.

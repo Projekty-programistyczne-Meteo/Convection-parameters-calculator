@@ -1,165 +1,40 @@
-import { useEffect, useRef, useState } from 'react';
-import {
-  initialContactFormData,
-  type ContactFormData,
-  type ContactFormErrors,
-} from '../../types/contactForm.types';
-import { validateContactForm } from '../../utils/formValidate';
-import { sendContactForm } from '../../services/formSender.service';
-import {
-  loadTurnstileScript,
-  removeTurnstileWidget,
-  renderTurnstileWidget,
-  resetTurnstileWidget,
-} from '../../services/turnstileWidget.service';
+import { useContactForm } from '../../hooks/useContactForm';
+import type { Href } from '../../hooks/useHashNavigation';
 
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
-const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY as string;
+type ContactFormProps = {
+  onNavigate: (href: Href) => void;
+};
 
 /**
  * Contact form with validation, Turnstile verification, and EmailJS submission.
- * It manages form state, user feedback messages, and security widget lifecycle.
+ * It delegates state, validation, and widget lifecycle to `useContactForm`.
  */
-function ContactForm() {
-  const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
-  const widgetIdRef = useRef<string | null>(null);
+function ContactForm({ onNavigate }: ContactFormProps) {
+  const {
+    formData,
+    errors,
+    successMessage,
+    formError,
+    isSending,
+    turnstileContainerRef,
+    handleChange,
+    handleSubmit,
+    handlePrivacyPolicyClick,
+  } = useContactForm(onNavigate);
 
-  const [formData, setFormData] = useState<ContactFormData>(
-    initialContactFormData,
-  );
-  const [errors, setErrors] = useState<ContactFormErrors>({});
-  const [turnstileToken, setTurnstileToken] = useState('');
-  const [isSending, setIsSending] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
-  const [formError, setFormError] = useState('');
-
-  useEffect(() => {
-    if (!TURNSTILE_SITE_KEY) {
-      setFormError(
-        'Security widget is not configured. Please contact the administrator.',
-      );
-      return;
-    }
-
-    loadTurnstileScript(() => {
-      if (!turnstileContainerRef.current || widgetIdRef.current) {
-        return;
-      }
-
-      const widgetId = renderTurnstileWidget({
-        container: turnstileContainerRef.current,
-        siteKey: TURNSTILE_SITE_KEY,
-        onSuccess: (token) => {
-          setTurnstileToken(token);
-          setFormError('');
-        },
-        onExpire: () => {
-          setTurnstileToken('');
-        },
-        onError: () => {
-          setTurnstileToken('');
-          setFormError(
-            'Security verification failed. Please refresh and try again.',
-          );
-        },
-      });
-
-      widgetIdRef.current = widgetId;
-    });
-
-    return () => {
-      removeTurnstileWidget(widgetIdRef.current);
-      widgetIdRef.current = null;
-    };
-  }, []);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value, type } = e.target;
-
-    const nextValue =
-      type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: nextValue,
-    }));
-
-    setErrors((prev) => ({
-      ...prev,
-      [name]: '',
-    }));
-
-    if (successMessage) {
-      setSuccessMessage('');
-    }
-
-    if (formError) {
-      setFormError('');
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const validation = validateContactForm(formData);
-
-    setErrors(validation.errors);
-    setSuccessMessage('');
-    setFormError('');
-
-    if (!validation.isValid) {
-      setFormError('Please correct the highlighted fields and try again.');
-      return;
-    }
-
-    if (!turnstileToken) {
-      setFormError('Please complete the security check before sending.');
-      return;
-    }
-
-    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
-      setFormError(
-        'Email service is not configured. Please contact the administrator.',
-      );
-      return;
-    }
-
-    setIsSending(true);
-
-    try {
-      await sendContactForm({
-        serviceId: EMAILJS_SERVICE_ID,
-        templateId: EMAILJS_TEMPLATE_ID,
-        publicKey: EMAILJS_PUBLIC_KEY,
-        data: validation.sanitizedData,
-      });
-
-      setSuccessMessage('Your message has been sent successfully.');
-      setFormData(initialContactFormData);
-      setErrors({});
-      setTurnstileToken('');
-      resetTurnstileWidget(widgetIdRef.current);
-    } catch (error) {
-      console.error('EmailJS error:', error);
-      setFormError('Failed to send the message. Please try again later.');
-      setTurnstileToken('');
-      resetTurnstileWidget(widgetIdRef.current);
-    } finally {
-      setIsSending(false);
+  const handleContactAdminEmail = () => {
+    if (formError?.contactEmail) {
+      window.location.href = `mailto:${formError.contactEmail}`;
     }
   };
 
   return (
-    <div className="w-full px-0 py-0 md:rounded-2xl md:border md:border-zinc-200 md:bg-[#faf9f7] md:px-10 md:py-10 md:shadow-sm">
+    <div className="w-full px-0 py-0 md:rounded-2xl md:border md:border-zinc-200 md:bg-cpc-background-support-component md:px-10 md:py-10 md:shadow-sm">
       <header className="max-w-2xl">
-        <h2 className="text-3xl font-bold tracking-tight text-stone-900 md:text-4xl">
+        <h2 className="text-3xl font-bold tracking-tight text-cpc-text-primary md:text-4xl">
           We&apos;d love to hear from you
         </h2>
-        <p className="mt-3 text-sm leading-6 text-stone-600 md:text-base">
+        <p className="mt-3 text-sm leading-6 text-cpc-text-secondary md:text-base">
           Fill in the contact form and we&apos;ll get back to you as soon as
           possible. Also, any feedback will be greatly appreciated. If you
           prefer, you can fill your nickname.
@@ -171,7 +46,7 @@ function ContactForm() {
           <div className="space-y-2">
             <label
               htmlFor="firstName"
-              className="block text-sm font-semibold text-stone-900"
+              className="block text-sm font-semibold text-cpc-text-primary"
             >
               First name (optional)
             </label>
@@ -187,14 +62,14 @@ function ContactForm() {
               aria-describedby={
                 errors.firstName ? 'firstName-error' : undefined
               }
-              className={`h-12 w-full rounded-xl border bg-white px-4 text-sm text-stone-900 shadow-sm outline-none transition placeholder:text-stone-400 focus:ring-2 ${
+              className={`h-12 w-full rounded-xl border bg-white px-4 text-sm text-cpc-text-primary shadow-sm outline-none transition placeholder:text-cpc-text-placeholder focus:ring-2 ${
                 errors.firstName
                   ? 'border-red-300 focus:border-red-500 focus:ring-red-100'
                   : 'border-zinc-300 focus:border-sky-700 focus:ring-sky-100'
               }`}
             />
             {errors.firstName && (
-              <p id="firstName-error" className="text-sm text-red-700">
+              <p id="firstName-error" className="text-sm text-cpc-text-danger">
                 {errors.firstName}
               </p>
             )}
@@ -203,7 +78,7 @@ function ContactForm() {
           <div className="space-y-2">
             <label
               htmlFor="lastName"
-              className="block text-sm font-semibold text-stone-900"
+              className="block text-sm font-semibold text-cpc-text-primary"
             >
               Last name (optional)
             </label>
@@ -217,14 +92,14 @@ function ContactForm() {
               maxLength={80}
               aria-invalid={Boolean(errors.lastName)}
               aria-describedby={errors.lastName ? 'lastName-error' : undefined}
-              className={`h-12 w-full rounded-xl border bg-white px-4 text-sm text-stone-900 shadow-sm outline-none transition placeholder:text-stone-400 focus:ring-2 ${
+              className={`h-12 w-full rounded-xl border bg-white px-4 text-sm text-cpc-text-primary shadow-sm outline-none transition placeholder:text-cpc-text-placeholder focus:ring-2 ${
                 errors.lastName
                   ? 'border-red-300 focus:border-red-500 focus:ring-red-100'
                   : 'border-zinc-300 focus:border-sky-700 focus:ring-sky-100'
               }`}
             />
             {errors.lastName && (
-              <p id="lastName-error" className="text-sm text-red-700">
+              <p id="lastName-error" className="text-sm text-cpc-text-danger">
                 {errors.lastName}
               </p>
             )}
@@ -233,9 +108,9 @@ function ContactForm() {
           <div className="space-y-2">
             <label
               htmlFor="email"
-              className="block text-sm font-semibold text-stone-900"
+              className="block text-sm font-semibold text-cpc-text-primary"
             >
-              <span className="text-red-900">★ </span>
+              <span className="text-cpc-text-required">★ </span>
               Email
             </label>
             <input
@@ -250,14 +125,14 @@ function ContactForm() {
               autoComplete="email"
               aria-invalid={Boolean(errors.email)}
               aria-describedby={errors.email ? 'email-error' : undefined}
-              className={`h-12 w-full rounded-xl border bg-white px-4 text-sm text-stone-900 shadow-sm outline-none transition placeholder:text-stone-400 focus:ring-2 ${
+              className={`h-12 w-full rounded-xl border bg-white px-4 text-sm text-cpc-text-primary shadow-sm outline-none transition placeholder:text-cpc-text-placeholder focus:ring-2 ${
                 errors.email
                   ? 'border-red-300 focus:border-red-500 focus:ring-red-100'
                   : 'border-zinc-300 focus:border-sky-700 focus:ring-sky-100'
               }`}
             />
             {errors.email && (
-              <p id="email-error" className="text-sm text-red-700">
+              <p id="email-error" className="text-sm text-cpc-text-danger">
                 {errors.email}
               </p>
             )}
@@ -267,9 +142,9 @@ function ContactForm() {
         <div className="mt-5 space-y-2">
           <label
             htmlFor="message"
-            className="block text-sm font-semibold text-stone-900"
+            className="block text-sm font-semibold text-cpc-text-primary"
           >
-            <span className="text-red-900">★ </span>
+            <span className="text-cpc-text-required">★ </span>
             Message
           </label>
           <textarea
@@ -283,21 +158,21 @@ function ContactForm() {
             maxLength={2000}
             aria-invalid={Boolean(errors.message)}
             aria-describedby={errors.message ? 'message-error' : undefined}
-            className={`min-h-45 w-full resize-y rounded-xl border bg-white px-4 py-3 text-sm text-stone-900 shadow-sm outline-none transition placeholder:text-stone-400 focus:ring-2 ${
+            className={`min-h-45 w-full resize-y rounded-xl border bg-white px-4 py-3 text-sm text-cpc-text-primary shadow-sm outline-none transition placeholder:text-cpc-text-placeholder focus:ring-2 ${
               errors.message
                 ? 'border-red-300 focus:border-red-500 focus:ring-red-100'
                 : 'border-zinc-300 focus:border-sky-700 focus:ring-sky-100'
             }`}
           />
           {errors.message && (
-            <p id="message-error" className="text-sm text-red-700">
+            <p id="message-error" className="text-sm text-cpc-text-danger">
               {errors.message}
             </p>
           )}
         </div>
 
         <div className="mt-5">
-          <label className="flex items-start gap-3 text-sm text-stone-600">
+          <label className="flex items-start gap-3 text-sm text-cpc-text-secondary">
             <input
               name="privacyAccepted"
               type="checkbox"
@@ -307,14 +182,15 @@ function ContactForm() {
               aria-describedby={
                 errors.privacyAccepted ? 'privacyAccepted-error' : undefined
               }
-              className="mt-0.5 h-4 w-4 rounded border-zinc-300 text-sky-700 focus:ring-sky-600"
+              className="mt-0.5 h-4 w-4 rounded border-zinc-300 text-cpc-text-info-link focus:ring-sky-600"
             />
             <span>
-              <span className="text-red-900">★ </span>I agree to the processing
-              of my data in accordance with the{' '}
+              <span className="text-cpc-text-required">★ </span>I agree to the
+              processing of my data in accordance with the{' '}
               <a
-                href="#"
-                className="font-medium text-stone-900 underline underline-offset-2"
+                href="#privacy-policy"
+                onClick={handlePrivacyPolicyClick}
+                className="font-medium text-cpc-text-primary underline underline-offset-2"
               >
                 privacy policy
               </a>
@@ -322,7 +198,10 @@ function ContactForm() {
             </span>
           </label>
           {errors.privacyAccepted && (
-            <p id="privacyAccepted-error" className="mt-2 text-sm text-red-700">
+            <p
+              id="privacyAccepted-error"
+              className="mt-2 text-sm text-cpc-text-danger"
+            >
               {errors.privacyAccepted}
             </p>
           )}
@@ -335,15 +214,28 @@ function ContactForm() {
         {(successMessage || formError) && (
           <div className="mt-5">
             {successMessage && (
-              <p className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+              <p className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-cpc-text-success">
                 {successMessage}
               </p>
             )}
 
             {formError && (
-              <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-                {formError}
-              </p>
+              <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-cpc-text-danger space-y-2">
+                <p>{formError.message}</p>
+                {formError.contactEmail && (
+                  <p>
+                    If it keeps happening,{' '}
+                    <button
+                      type="button"
+                      onClick={handleContactAdminEmail}
+                      className="underline font-semibold hover:opacity-80 bg-transparent border-none cursor-pointer p-0"
+                    >
+                      contact the administrator
+                    </button>
+                    .
+                  </p>
+                )}
+              </div>
             )}
           </div>
         )}
@@ -352,7 +244,7 @@ function ContactForm() {
           <button
             type="submit"
             disabled={isSending}
-            className="h-12 w-full max-w-40 rounded-xl bg-[#111111] px-6 text-sm font-semibold text-white shadow-sm transition hover:cursor-pointer hover:bg-[#222222] focus:outline-none focus:ring-2 focus:ring-stone-300 disabled:cursor-not-allowed disabled:opacity-60 md:w-55"
+            className="h-12 w-full max-w-40 rounded-xl bg-[#111111] px-6 text-sm font-semibold text-cpc-text-inverse shadow-sm transition hover:cursor-pointer hover:bg-[#222222] focus:outline-none focus:ring-2 focus:ring-stone-300 disabled:cursor-not-allowed disabled:opacity-60 md:w-55"
           >
             {isSending ? 'Sending...' : 'Send message'}
           </button>
