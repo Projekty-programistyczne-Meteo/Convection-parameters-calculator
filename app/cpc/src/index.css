@@ -1,5 +1,45 @@
 @import 'tailwindcss';
 
+@theme {
+  /*
+    Text colors
+  */
+  --color-cpc-text-primary: #1c1917;
+  --color-cpc-text-secondary: #57534e;
+  --color-cpc-text-tertiary: #4b5563;
+  --color-cpc-text-footer: #e7e5e4;
+  --color-cpc-text-footer-muted: #d6d3d1;
+  --color-cpc-text-inverse: #ffffff;
+  --color-cpc-text-link: #2563eb;
+  --color-cpc-text-link-hover: #1e40af;
+  --color-cpc-text-info-link: #075985;
+  --color-cpc-text-info-link-hover: #082f49;
+  --color-cpc-text-danger: #b91c1c;
+  --color-cpc-text-required: #7f1d1d;
+  --color-cpc-text-success: #15803d;
+  --color-cpc-text-placeholder: #a8a29e;
+  --color-cpc-text-nav: #292524;
+  --color-cpc-text-nav-muted: #374151;
+  /*
+    Background colors
+  */
+  --color-cpc-background-navbar: rgb(224 242 254 / 0.95);
+  --color-cpc-background-nav-hover: #d1e4ed;
+  --color-cpc-background-nav-active: #c7e1ed;
+  --color-cpc-background-hero: #0f5d93;
+  --color-cpc-background-main: #eee8e8;
+  --color-cpc-background-calculators: #f6f1f1;
+  --color-cpc-background-support-component: #faf9f7;
+  --color-cpc-background-footer-main: #2f2f2f;
+  --color-cpc-background-footer-bottom: #282828;
+  --color-cpc-background-button: #1569a8;
+  --color-cpc-background-button-hover: #0e5e97;
+  --color-cpc-background-calculation-result-box: #f1fbe2;
+  --color-cpc-background-input-output-global: #ececec;
+  --color-cpc-background-results-table: #e0dbdb;
+  --color-cpc-background-select-focus: #fcfcfc;
+}
+
 @font-face {
   font-family: 'Quick Sand';
   src: url('./assets/fonts/QuickSand/Quicksand-Medium.ttf') format('truetype');
@@ -27,6 +67,10 @@ body {
     sans-serif;
 }
 
+/*
+  Animation for privacy policy text, that makes it fade in and out every 2 seconds, to draw attention to it. 
+  This animation start only, when the user clicks on privacy policy link in support page.
+*/
 .animate-privacy-policy {
   animation: myAnim 2s ease 0s 1 normal forwards;
 }
