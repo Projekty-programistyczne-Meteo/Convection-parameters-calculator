@@ -16,14 +16,21 @@ The convection parameters calculator is an amateur project intended for storm hu
 
 # Instalation and start
 
-## Full published software
+## Published software
 
--- Content --
+Software is currently being hosted on Github Pages. Navigate to _https://projekty-programistyczne-meteo.github.io/Convection-parameters-calculator/_. If you want release package, scroll down and navigate to **Client edition**.
 
 ## Developer edition
 
+- Clone repo or download package
 - Go to app/cpc and in command line type: _npm ci_
 - Then type _npm run dev_, if you want to run in background, then type: _npm run dev -- --host 0.0.0.0 &_
 - Open browser and provide url: _http://localhost:5173/Convection-parameters-calculator/_
 
 ## Client edition
+
+- Go to `releases` section and download .zip file
+- Extract .zip file, you will see folders and files like: _assets_, _diagrams_, _images_ e.t.c.
+- In this root section open command line and type: _npx serve_
+- Accept instalatlation of additional tools by typing 'y' and enter
+- Open browser and navigate to _http://localhost:3000/_
