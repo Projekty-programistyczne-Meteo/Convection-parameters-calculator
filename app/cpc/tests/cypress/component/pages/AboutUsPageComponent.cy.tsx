@@ -31,7 +31,9 @@ describe('AboutUsPage', () => {
     cy.mount(<AboutUsPage />);
 
     cy.contains('Fiip Szymanek').should('be.visible');
-    cy.contains('Template text about Filip Szymanek').should('be.visible');
+    cy.contains(
+      `I'm a member of the Polish Storm Hunters association and actively work to educate people about storm phenomena and storms themselves. I also forecast storms and work for a newspaper. My mission is to promote meteorology and warn people about dangerous weather phenomena.`,
+    ).should('be.visible');
   });
 
   it('displays cooperation section', () => {
