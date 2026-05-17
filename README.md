@@ -12,9 +12,9 @@ The convection parameters calculator is an amateur project intended for storm hu
 
 # Instalation and start
 
-## Full published software
+## Published software
 
--- Content --
+Software is currently being hosted on Github Pages. Navigate to _https://projekty-programistyczne-meteo.github.io/Convection-parameters-calculator/_. If you want release package, scroll down and navigate to **Client edition**.
 
 ## Developer edition
 
