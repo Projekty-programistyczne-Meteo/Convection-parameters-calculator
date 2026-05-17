@@ -26,13 +26,13 @@ function UpdraftStrenght() {
   });
 
   return (
-    <section className="bg-[#F6F1F1] px-6 py-10 md:px-12 lg:px-20">
+    <section className="bg-cpc-background-calculators px-6 py-10 md:px-12 lg:px-20">
       <div className="mx-auto max-w-6xl space-y-8">
         <header>
-          <h2 className="text-xl font-bold tracking-tight text-stone-900 md:text-2xl">
+          <h2 className="text-xl font-bold tracking-tight text-cpc-text-primary md:text-2xl">
             Updraft Strenght
           </h2>
-          <p className="mt-2 text-xs text-stone-600 md:text-sm">
+          <p className="mt-2 text-xs text-cpc-text-secondary md:text-sm">
             Maximum theoretical updraft speed calculated from CAPE value. It
             approximates the vertical motion available to rising air parcels in
             unstable atmospheric conditions.

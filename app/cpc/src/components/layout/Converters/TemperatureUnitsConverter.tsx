@@ -34,9 +34,9 @@ function TemperatureUnitsConverter() {
   }));
 
   return (
-    <section className="bg-[#F6F1F1] px-6 py-10 md:px-12 lg:px-20">
+    <section className="bg-cpc-background-calculators px-6 py-10 md:px-12 lg:px-20">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-5 text-xl font-bold tracking-tight text-stone-900 md:text-2xl">
+        <h2 className="mb-5 text-xl font-bold tracking-tight text-cpc-text-primary md:text-2xl">
           Temperature Units Converter
         </h2>
 
@@ -70,7 +70,7 @@ function TemperatureUnitsConverter() {
           rows={rows}
         />
 
-        <p className="mt-4 text-xs text-stone-600">
+        <p className="mt-4 text-xs text-cpc-text-secondary">
           When a Celsius value is selected, conversions are calculated directly
           from degrees Celsius. When other units are selected, conversions first
           go through degrees Celsius (°C) and then to the target units.

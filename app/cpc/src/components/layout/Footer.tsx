@@ -23,34 +23,34 @@ function Footer({ activeHref, onNavigate }: FooterProps) {
   };
 
   return (
-    <footer className="bg-[#2f2f2f] text-[#f5f2eb] text-sm">
+    <footer className="bg-cpc-background-footer-main text-cpc-text-footer text-sm">
       <div className="mx-auto max-w-8xl px-6 py-12 md:px-10 lg:px-16">
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {/* Left column */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-sm md:text-xl font-semibold text-white">
+              <h3 className="text-sm md:text-xl font-semibold text-cpc-text-inverse">
                 Website Designers:
               </h3>
-              <p className="mt-3 text-sm leading-7 text-stone-200">
+              <p className="mt-3 text-sm leading-7 text-cpc-text-footer">
                 Jakub Początek, Filip Szymanek
               </p>
             </div>
 
             <div>
-              <h3 className="text-sm md:text-xl font-semibold text-white">
+              <h3 className="text-sm md:text-xl font-semibold text-cpc-text-inverse">
                 Website Developer:
               </h3>
-              <p className="mt-3 text-xs md:text-sm leading-7 text-stone-200">
+              <p className="mt-3 text-xs md:text-sm leading-7 text-cpc-text-footer">
                 Jakub Początek
               </p>
             </div>
 
             <div>
-              <h3 className="text-sm md:text-xl font-semibold text-white">
+              <h3 className="text-sm md:text-xl font-semibold text-cpc-text-inverse">
                 Content creators:
               </h3>
-              <p className="mt-3 text-xs md:text-sm leading-7 text-stone-200">
+              <p className="mt-3 text-xs md:text-sm leading-7 text-cpc-text-footer">
                 Jakub Początek, Filip Szymanek
               </p>
             </div>
@@ -62,7 +62,7 @@ function Footer({ activeHref, onNavigate }: FooterProps) {
               <button
                 type="button"
                 onClick={handleScrollTop}
-                className="inline-flex items-center gap-2 text-sm md:text-xl font-semibold text-white transition hover:text-stone-300"
+                className="inline-flex items-center gap-2 text-sm md:text-xl font-semibold text-cpc-text-inverse transition hover:text-cpc-text-footer-muted"
               >
                 <span aria-hidden="true">⇪</span>
                 <span>Back to top</span>
@@ -71,19 +71,19 @@ function Footer({ activeHref, onNavigate }: FooterProps) {
             </div>
 
             <div>
-              <h3 className="text-sm md:text-xl font-semibold text-white">
+              <h3 className="text-sm md:text-xl font-semibold text-cpc-text-inverse">
                 Menu
               </h3>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-xs md:text-sm text-stone-200 marker:text-stone-300">
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-xs md:text-sm text-cpc-text-footer marker:text-cpc-text-footer-muted">
                 {navLinks.map((link) => (
                   <li key={link.label}>
                     <button
                       type="button"
                       onClick={() => handleNavigation(link.href)}
-                      className={`transition hover:text-white hover:cursor-pointer ${
+                      className={`transition hover:text-cpc-text-inverse hover:cursor-pointer ${
                         activeHref === link.href
-                          ? 'text-white font-semibold'
-                          : 'text-stone-200'
+                          ? 'text-cpc-text-inverse font-semibold'
+                          : 'text-cpc-text-footer'
                       }`}
                     >
                       {link.label}
@@ -94,13 +94,13 @@ function Footer({ activeHref, onNavigate }: FooterProps) {
             </div>
 
             <div>
-              <h3 className="text-sm md:text-xl font-semibold text-white">
+              <h3 className="text-sm md:text-xl font-semibold text-cpc-text-inverse">
                 Terms and conditions and Privacy Policy
               </h3>
               <a
                 href="https://github.com/Projekty-programistyczne-Meteo/Convection-parameters-calculator/blob/main/LICENSE"
                 target="_blank"
-                className="mt-3 inline-block text-xs md:text-sm text-stone-200 underline underline-offset-4 transition hover:text-white hover:cursor-pointer"
+                className="mt-3 inline-block text-xs md:text-sm text-cpc-text-footer underline underline-offset-4 transition hover:text-cpc-text-inverse hover:cursor-pointer"
               >
                 Licence and agreement
               </a>
@@ -110,26 +110,26 @@ function Footer({ activeHref, onNavigate }: FooterProps) {
           {/* Right column */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-sm md:text-xl font-semibold text-white">
+              <h3 className="text-sm md:text-xl font-semibold text-cpc-text-inverse">
                 Contact:
               </h3>
               <a
                 href="mailto:cpc.jpfs.support@gmail.com"
-                className="mt-3 inline-block text-xs md:text-sm text-stone-200 underline underline-offset-4 transition hover:text-white hover:cursor-pointer"
+                className="mt-3 inline-block text-xs md:text-sm text-cpc-text-footer underline underline-offset-4 transition hover:text-cpc-text-inverse hover:cursor-pointer"
               >
                 cpc.jpfs.support@gmail.com
               </a>
             </div>
 
             <div>
-              <h3 className="text-sm md:text-xl font-semibold text-white">
+              <h3 className="text-sm md:text-xl font-semibold text-cpc-text-inverse">
                 Support us here:
               </h3>
               <a
                 href="https://lowcyburz.pl/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-block text-xs md:text-sm text-stone-200 underline underline-offset-4 transition hover:text-white hover:cursor-pointer"
+                className="mt-3 inline-block text-xs md:text-sm text-cpc-text-footer underline underline-offset-4 transition hover:text-cpc-text-inverse hover:cursor-pointer"
               >
                 lowcyburz.pl
               </a>
@@ -182,8 +182,8 @@ function Footer({ activeHref, onNavigate }: FooterProps) {
         </div>
       </div>
 
-      <div className="border-t border-white/10 bg-[#282828] px-6 py-5 text-center md:px-10">
-        <p className="text-sm text-stone-200">
+      <div className="border-t border-white/10 bg-cpc-background-footer-bottom px-6 py-5 text-center md:px-10">
+        <p className="text-sm text-cpc-text-footer">
           © 2026 CPC. | ver: alpha-0.1.0 | All rights reserved
         </p>
       </div>

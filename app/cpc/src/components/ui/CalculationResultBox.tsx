@@ -10,17 +10,19 @@ function CalculationResultBox({
   description,
 }: CalculationResultBoxProps) {
   return (
-    <div className="mt-6 rounded-sm border border-zinc-400 bg-[#f1fbe2] px-4 py-4 md:px-6 md:py-5">
-      <p className="text-sm font-semibold text-stone-900 md:text-base">
+    <div className="mt-6 rounded-sm border border-zinc-400 bg-cpc-background-calculation-result-box px-4 py-4 md:px-6 md:py-5">
+      <p className="text-sm font-semibold text-cpc-text-primary md:text-base">
         {formula}
         {result && (
-          <span className="ml-2 text-sm font-bold text-green-700 md:text-base">
+          <span className="ml-2 text-sm font-bold text-cpc-text-success md:text-base">
             = {result}
           </span>
         )}
       </p>
 
-      <p className="mt-2 text-xs text-stone-600 md:text-sm">{description}</p>
+      <p className="mt-2 text-xs text-cpc-text-secondary md:text-sm">
+        {description}
+      </p>
     </div>
   );
 }

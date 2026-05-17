@@ -34,9 +34,9 @@ function WindUnitsConverter() {
   }));
 
   return (
-    <section className="bg-[#F6F1F1] px-6 py-10 md:px-12 lg:px-20">
+    <section className="bg-cpc-background-calculators px-6 py-10 md:px-12 lg:px-20">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-5 text-xl font-bold tracking-tight text-stone-900 md:text-2xl">
+        <h2 className="mb-5 text-xl font-bold tracking-tight text-cpc-text-primary md:text-2xl">
           Wind Units Converter
         </h2>
 
@@ -70,7 +70,7 @@ function WindUnitsConverter() {
           rows={rows}
         />
 
-        <p className="mt-4 text-xs text-stone-600">
+        <p className="mt-4 text-xs text-cpc-text-secondary">
           All conversions use meters per second (m/s) as the base meteorological
           unit. When another unit is selected, values are first converted to m/s
           and then to the remaining units.

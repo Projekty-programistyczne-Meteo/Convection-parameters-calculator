@@ -46,7 +46,7 @@ function MainPage() {
   return (
     <>
       <Hero />
-      <article className="bg-[#EEE8E8] px-6 py-10 md:px-12 lg:px-20 text-stone-900">
+      <article className="bg-cpc-background-main px-6 py-10 md:px-12 lg:px-20 text-cpc-text-primary">
         <section className="space-y-6">
           <h2 className="text-2xl font-bold leading-tight">
             Docs and quick start
@@ -57,11 +57,15 @@ function MainPage() {
               Welcome to Convection Parameters Calculator
             </h3>
             <p className="text-base leading-8">
-              This website is an interactive tool designed for meteorologists,
-              weather enthusiasts, and atmospheric science students. It provides
-              a comprehensive suite of calculators and unit converters
-              specifically tailored for convective weather analysis and
-              atmospheric thermodynamics calculations.
+              <span>
+                This website is an interactive tool designed for meteorologists,
+                weather enthusiasts, and atmospheric science students.{' '}
+              </span>
+              <span className="mt-3 block md:mt-0 md:inline">
+                It provides a comprehensive suite of calculators and unit
+                converters specifically tailored for convective weather analysis
+                and atmospheric thermodynamics calculations.
+              </span>
             </p>
           </div>
 
@@ -75,34 +79,6 @@ function MainPage() {
               on github pages. As an alpha version, we are continuously
               improving features, adding more calculators, and refining the user
               experience based on feedback.
-            </p>
-          </div>
-
-          <div id="privacy-policy">
-            <h3
-              ref={privacyPolicyHeadingRef}
-              className="mb-3 text-xl font-semibold leading-tight"
-            >
-              Privacy policy
-            </h3>
-            <p className="text-base leading-8">
-              We value your privacy and are committed to protecting your data.{' '}
-              <u>
-                We are not interested in collecting any personal information
-                from our users.
-              </u>{' '}
-              All calculations are performed locally in your browser, and we do
-              not store or transmit any of your data to our servers. In contact
-              form submissions, we use EmailJS to send messages directly to our
-              email without storing them on our servers. The only data needed
-              for the contact form is your email address and message content,
-              which are sent securely to our email address. We do not share your
-              information with third parties, and we do not use cookies or
-              tracking technologies on our website. Providing your personal
-              information in contact form is entirely optional, and you can use
-              all the features of our website without sharing any personal data.
-              If you have any questions or concerns about our privacy practices,
-              please feel free to contact us.
             </p>
           </div>
         </section>
@@ -248,6 +224,34 @@ function MainPage() {
             converters, visit the respective pages where you'll find
             step-by-step explanations and formulas.
           </p>
+
+          <div id="privacy-policy">
+            <h3
+              ref={privacyPolicyHeadingRef}
+              className="mb-3 text-xl font-semibold leading-tight"
+            >
+              Privacy policy
+            </h3>
+            <p className="text-base leading-8">
+              We value your privacy and are committed to protecting your data.{' '}
+              <u>
+                We are not interested in collecting any personal information
+                from our users.
+              </u>{' '}
+              All calculations are performed locally in your browser, and we do
+              not store or transmit any of your data to our servers. In contact
+              form submissions, we use EmailJS to send messages directly to our
+              email without storing them on our servers. The only data needed
+              for the contact form is your email address and message content,
+              which are sent securely to our email address. We do not share your
+              information with third parties, and we do not use cookies or
+              tracking technologies on our website. Providing your personal
+              information in contact form is entirely optional, and you can use
+              all the features of our website without sharing any personal data.
+              If you have any questions or concerns about our privacy practices,
+              please feel free to contact us.
+            </p>
+          </div>
         </section>
       </article>
     </>

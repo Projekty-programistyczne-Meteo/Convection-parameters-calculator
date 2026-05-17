@@ -14,7 +14,7 @@ function SupportPage({ onNavigate }: SupportPageProps) {
   return (
     <>
       <Hero />
-      <section className="bg-[#faf9f7] md:bg-[#EEE8E8] px-10 py-10 md:px-12 lg:px-20 text-stone-900">
+      <section className="bg-cpc-background-support-component md:bg-cpc-background-main px-10 py-10 md:px-12 lg:px-20 text-cpc-text-primary">
         <ContactForm onNavigate={onNavigate} />
       </section>
     </>

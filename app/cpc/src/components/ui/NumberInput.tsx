@@ -15,7 +15,7 @@ function NumberInput({
     <div className="space-y-2">
       <label
         htmlFor={id}
-        className="block text-base font-semibold text-stone-900"
+        className="block text-base font-semibold text-cpc-text-primary"
       >
         {label}
       </label>
@@ -26,7 +26,7 @@ function NumberInput({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-12 w-full rounded-sm border border-zinc-400 bg-[#ECECEC] px-3 text-sm text-stone-900 outline-none transition focus:border-sky-700 focus:bg-white"
+        className="h-12 w-full rounded-sm border border-zinc-400 bg-cpc-background-input-output-global px-3 text-sm text-cpc-text-primary outline-none transition focus:border-sky-700 focus:bg-white"
       />
     </div>
   );
