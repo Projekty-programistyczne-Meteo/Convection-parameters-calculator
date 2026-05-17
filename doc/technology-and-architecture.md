@@ -36,10 +36,11 @@ Instead of a routing library, the app uses hash-based navigation:
 - `App.css` and `index.css` - global and app-level styles.
 - `assets/` - bundled static assets such as local fonts.
 - `components/` - React UI split into layout, pages, calculators, converters, and shared UI.
-- `hooks/` - reusable state and event logic for calculators and converters.
+- `hooks/` - reusable state and event logic for calculators, converters, and the contact form.
 - `services/` - browser integrations for EmailJS and Cloudflare Turnstile.
 - `types/` - shared TypeScript contracts.
 - `utils/` - pure calculation, conversion, formatting, and validation functions.
+- `vite.config.ts` - Vite configuration, including a development CSP header plugin to support the Cloudflare Turnstile integration and local dev environment.
 
 ## Component Organization
 

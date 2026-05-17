@@ -110,7 +110,7 @@ The E2E config uses:
 - one retry in run mode and open mode
 - `testIsolation: false`
 
-Because E2E tests depend on the running app, make sure the Vite dev server is available before running them.
+Because E2E tests depend on the running app, make sure the Vite dev server is available before running them. The app runs at `http://localhost:5173/Convection-parameters-calculator/` and that is the base URL configured for E2E tests.
 
 ## Adding New E2E Tests
 

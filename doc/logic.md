@@ -19,6 +19,14 @@
 - calls the provided `convertAll` function,
 - stores the latest result map.
 
+`src/hooks/useContactForm.ts` manages the support page contact form:
+
+- stores contact form field state,
+- validates and sanitizes submission payloads,
+- manages Turnstile widget lifecycle,
+- sends messages through EmailJS,
+- exposes form callbacks for the presentational component.
+
 ## Calculator Utilities
 
 Calculator utilities live in `src/utils/Calculators`. They are pure functions: each receives typed numeric input and returns a typed result object.
@@ -74,7 +82,7 @@ Meters per second is the intermediate base for non-m/s wind conversions.
 - requires privacy policy acceptance,
 - returns both validation errors and sanitized data.
 
-This keeps `ContactForm.tsx` focused on UI state, submit flow, and service calls.
+This keeps `ContactForm.tsx` focused on rendering the contact form and delegating behavior to `useContactForm`.
 
 ## Types
 
