@@ -18,7 +18,7 @@ Software is currently being hosted on Github Pages. Navigate to _https://projekt
 
 ## Requirements
 
-- Node.js at least version: v22.20.0 ++
+- Node.js at least version: v22.20.0 ++, reference: _https://nodejs.org/en/download_.
 - Operating system with command line.
 - Access to browsers
 
