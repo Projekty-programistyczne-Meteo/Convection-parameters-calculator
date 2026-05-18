@@ -1,7 +1,3 @@
-# Branch description
-
-This branch is used for developing purposes, CPC will provide different kind of releases, alpha, beta and full releases with Major, Minor updates and patches.
-
 # Convection-parameters-calculator
 
 The convection parameters calculator is an amateur project intended for storm hunters and enthusiasts of convective phenomena. Includes tools for converting wind and temperature units.
