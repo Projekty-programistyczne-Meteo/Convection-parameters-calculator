@@ -30,7 +30,7 @@ Software is currently being hosted on Github Pages. Navigate to _https://projekt
 
 ## Client edition
 
-> 1. Go to `releases` section and download _CPC_client_alpha-0_1_0.zip_ file
+> 1. Go to `releases` section and download _CPC_client_alpha-(ver).zip_ file
 > 2. Extract .zip file, you will see folders and files like: _assets_, _diagrams_, _images_ e.t.c.
 > 3. In this root section open command line and type: _npx serve_
 > 4. Accept instalatlation of additional tools by typing 'y' and enter

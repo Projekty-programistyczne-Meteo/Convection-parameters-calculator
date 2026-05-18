@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white text-cpc-text-primary">
-      <Navbar activeHref={activeHref} onNavigate={navigate} />
+      <Navbar activeHref={activeHref} onNavigate={(href) => navigate(href, { scrollToTop: true })} />
 
       <main id="main-content">{renderPage()}</main>
 
